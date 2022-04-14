@@ -400,3 +400,10 @@ ImobiliariaTG/.tern-project
 ImobiliariaTG/.tern-project
  
 ImobiliariaTG/target/m2e-wtp/web-resources/META-INF/maven/br.com.imobiliaria/ImobiliariaTG/pom.properties
+ImobiliariaTG/.classpath
+ImobiliariaTG/.settings/org.eclipse.jdt.core.prefs
+ImobiliariaTG/.settings/org.eclipse.wst.common.component
+*.properties
+*.class
+*.component
+*.prefs
