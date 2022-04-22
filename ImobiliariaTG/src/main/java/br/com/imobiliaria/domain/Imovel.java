@@ -14,10 +14,13 @@ public class Imovel extends GenericDomain {
 
 	@Column(nullable = false)
 	private String caminhoDocumento;
+	
+	@Column(nullable = false)
+	private String enderecoCompleto;
 
-	@OneToOne // chave estrangeira 1 para 1
-	@JoinColumn(nullable = false) // personalizar chaves estrangeiras
-	private Endereco endereco;
+//	@OneToOne // chave estrangeira 1 para 1
+//	@JoinColumn(nullable = false) // personalizar chaves estrangeiras
+//	private Endereco endereco;
 
 	@Column(length = 2, nullable = false)
 	private String qtdComodos;
@@ -52,12 +55,12 @@ public class Imovel extends GenericDomain {
 		this.caminhoDocumento = caminhoDocumento;
 	}
 
-	public Endereco getEndereco() {
-		return endereco;
+	public String getEnderecoCompleto() {
+		return enderecoCompleto;
 	}
-
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
+	
+	public void setEnderecoCompleto(String enderecoCompleto) {
+		this.enderecoCompleto = enderecoCompleto;
 	}
 
 	public String getQtdComodos() {

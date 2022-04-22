@@ -6,7 +6,6 @@ import java.util.List;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import br.com.imobiliaria.domain.Endereco;
 import br.com.imobiliaria.domain.Imovel;
 import br.com.imobiliaria.domain.Usuario;
 
@@ -14,9 +13,6 @@ public class ImovelDAOTest {
 	@Test
 	@Ignore
 	public void salvar() {
-		Long codigoEndereco = 1L;
-		EnderecoDAO enderecoDAO = new EnderecoDAO();
-		Endereco endereco = enderecoDAO.buscar(codigoEndereco);
 
 		Long codigoUsuario = 2L;
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
@@ -25,7 +21,7 @@ public class ImovelDAOTest {
 		Imovel imovel = new Imovel();
 		imovel.setAtivo(true);
 		imovel.setCaminhoDocumento("teste");
-		imovel.setEndereco(endereco);
+		imovel.setEnderecoCompleto("");
 		imovel.setObservacoes("teste");
 		imovel.setQtdBanheiros("2");
 		imovel.setQtdCamas("3");
@@ -48,7 +44,7 @@ public class ImovelDAOTest {
 			System.out.println("Código: " + imovel.getCodigo());
 			System.out.println("Observação: " + imovel.getObservacoes());
 			System.out.println(
-					"Endereço: " + imovel.getEndereco().getLogradrouro() + " " + imovel.getEndereco().getNumero());
+					"Endereço: " + imovel.getEnderecoCompleto());
 			System.out.println("Usuário: " + imovel.getUsuario().getNome());
 			System.out.println("Valor Diária: " + imovel.getValorDiaria());
 			System.out.println();
@@ -65,7 +61,7 @@ public class ImovelDAOTest {
 
 		System.out.println("Código: " + imovel.getCodigo());
 		System.out.println("Observação: " + imovel.getObservacoes());
-		System.out.println("Endereço: " + imovel.getEndereco().getLogradrouro() + " " + imovel.getEndereco().getNumero());
+		System.out.println("Endereço: " + imovel.getEnderecoCompleto());
 		System.out.println("Usuário: " + imovel.getUsuario().getNome());
 		System.out.println("Valor Diária: " + imovel.getValorDiaria());
 	}
@@ -83,7 +79,7 @@ public class ImovelDAOTest {
 		System.out.println("Imóvel removido: ");
 		System.out.println("Código: " + imovel.getCodigo());
 		System.out.println("Observação: " + imovel.getObservacoes());
-		System.out.println("Endereço: " + imovel.getEndereco().getLogradrouro() + " " + imovel.getEndereco().getNumero());
+		System.out.println("Endereço: " + imovel.getEnderecoCompleto());
 		System.out.println("Usuário: " + imovel.getUsuario().getNome());
 		System.out.println("Valor Diária: " + imovel.getValorDiaria());
 	}
@@ -99,28 +95,24 @@ public class ImovelDAOTest {
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		Usuario usuario = usuarioDAO.buscar(codigoUsuario);
 		
-		Long codigoEndereco = 5L;
-		EnderecoDAO enderecoDAO =  new EnderecoDAO();
-		Endereco endereco = enderecoDAO.buscar(codigoEndereco);
-		
 		System.out.println("Imóvel a ser editado: ");
 		System.out.println("Código: " + imovel.getCodigo());
 		System.out.println("Observação: " + imovel.getObservacoes());
-		System.out.println("Endereço: " + imovel.getEndereco().getLogradrouro() + " " + imovel.getEndereco().getNumero());
+		System.out.println("Endereço: " + imovel.getEnderecoCompleto());
 		System.out.println("Usuário: " + imovel.getUsuario().getNome());
 		System.out.println("Valor Diária: " + imovel.getValorDiaria());
 		System.out.println();
 		
 		imovel.setObservacoes("dfcnodhnco");
 		imovel.setUsuario(usuario);
-		imovel.setEndereco(endereco);
+		imovel.setEnderecoCompleto("");
 		
 		imovelDAO.editar(imovel);
 		
 		System.out.println("Imóvel editado: ");
 		System.out.println("Código: " + imovel.getCodigo());
 		System.out.println("Observação: " + imovel.getObservacoes());
-		System.out.println("Endereço: " + imovel.getEndereco().getLogradrouro() + " " + imovel.getEndereco().getNumero());
+		System.out.println("Endereço: " + imovel.getEnderecoCompleto());
 		System.out.println("Usuário: " + imovel.getUsuario().getNome());
 		System.out.println("Valor Diária: " + imovel.getValorDiaria());
 	}

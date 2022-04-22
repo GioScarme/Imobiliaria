@@ -12,23 +12,24 @@ import br.com.imobiliaria.domain.Usuario;
 
 public class UsuarioDAOTest {
 	@Test
-	@Ignore
+//	@Ignore
 	public void salvar() throws ParseException {
-		Long codigoEndereco = 1L;
+//		Long codigoEndereco = 1L;
 		
-		EnderecoDAO enderecoDAO = new EnderecoDAO();
-
-		Endereco endereco = enderecoDAO.buscar(codigoEndereco);
+//		EnderecoDAO enderecoDAO = new EnderecoDAO();
+//
+//		Endereco endereco = enderecoDAO.buscar(codigoEndereco);
 
 		Usuario usuario = new Usuario();
-		usuario.setCpf("432.653.258-06");
+		usuario.setCpf("488.653.258-08");
 		usuario.setAtivo(true);
-		usuario.setEndereco(endereco);
+		usuario.setEnderecoCompleto("Rua Antonio Eldorado kckckc 1221");
+//		usuario.setEndereco(endereco);
 		usuario.setLogin("scarmegio@gmail.com");
-		usuario.setNome("Giovanna Scarme de Mira");
+		usuario.setNome("Marianna Scarme de Mira");
 		usuario.setSenha("1234");
-		usuario.setTelefone("14 996184885");
-		usuario.setDataNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("11/05/2002"));
+		usuario.setTelefone("14 996524878");
+		usuario.setDataNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("19/06/2000"));
 
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		usuarioDAO.salvar(usuario);
@@ -42,8 +43,7 @@ public class UsuarioDAOTest {
 
 		for (Usuario usuario : resultado) {
 			System.out.println("Nome: " + usuario.getNome() + " CPF: " + usuario.getCpf() + " Data Nasc: "
-					+ usuario.getDataNascimento() + " Endereco: " + usuario.getEndereco().getLogradrouro() + " "
-					+ usuario.getEndereco().getNumero());
+					+ usuario.getDataNascimento() + " Endereco: " + usuario.getEnderecoCompleto());
 			System.out.println();
 		}
 	}
@@ -57,8 +57,7 @@ public class UsuarioDAOTest {
 		Usuario usuario = usuarioDAO.buscar(codigo);
 
 		System.out.println("Nome: " + usuario.getNome() + " CPF: " + usuario.getCpf() + " Data Nasc: "
-				+ usuario.getDataNascimento() + " Endereco: " + usuario.getEndereco().getLogradrouro() + " "
-				+ usuario.getEndereco().getNumero());
+				+ usuario.getDataNascimento() + " Endereco: " + usuario.getEnderecoCompleto());
 	}
 
 	@Test
@@ -73,11 +72,11 @@ public class UsuarioDAOTest {
 
 		System.out.println("Usuário removido: ");
 		System.out.println("Nome: " + usuario.getNome() + " CPF: " + usuario.getCpf() + " Data Nasc: "
-				+ usuario.getDataNascimento() + " Endereco: " + usuario.getEndereco().getLogradrouro() + " "
-				+ usuario.getEndereco().getNumero());
+				+ usuario.getDataNascimento() + " Endereco: " + usuario.getEnderecoCompleto());
 	}
 
 	@Test
+	@Ignore
 	public void editar() {
 		Long codigoUsuario = 2L;
 		Long codigoEndereco = 1L;
@@ -92,16 +91,14 @@ public class UsuarioDAOTest {
 
 		System.out.println("Usuário a ser editado: ");
 		System.out.println("Nome: " + usuario.getNome() + " CPF: " + usuario.getCpf() + " Data Nasc: "
-				+ usuario.getDataNascimento() + " Endereco: " + usuario.getEndereco().getLogradrouro() + " "
-				+ usuario.getEndereco().getNumero());
+				+ usuario.getDataNascimento() + " Endereco: " + usuario.getEnderecoCompleto());
 		
 		usuario.setNome("Luiza French");
-		usuario.setEndereco(endereco);
+		usuario.setEnderecoCompleto("dcnoiwndccd");
 		usuarioDAO.editar(usuario);
 		
 		System.out.println("Usuário editado: ");
 		System.out.println("Nome: " + usuario.getNome() + " CPF: " + usuario.getCpf() + " Data Nasc: "
-				+ usuario.getDataNascimento() + " Endereco: " + usuario.getEndereco().getLogradrouro() + " "
-				+ usuario.getEndereco().getNumero());
+				+ usuario.getDataNascimento() + " Endereco: " + usuario.getEnderecoCompleto());
 	}
 }

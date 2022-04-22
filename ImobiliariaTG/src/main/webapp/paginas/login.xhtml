@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<f:facet name="first">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+	</f:facet>
+
+	<title>AssinaMap</title>
+
+	<h:outputScript name="js/ripple.js" library="ultima-layout" />
+	<h:outputScript name="js/layout.js" library="ultima-layout" />
+	<h:outputStylesheet name="sistema.css" library="css" />
+
+	<link rel="shortcut icon" type="image/x-icon"
+		href="#{request.contextPath}/resources/img/favicon.png" />
+
+</h:head>
+
+<h:body styleClass="bg">
+	<h:form id="fmrPrincipal">
+		<p:growl id="growl" />
+
+		<div class="card login-panel ui-fluid">
+
+			<div class="p-grid">
+				<p:graphicImage name="logo-gemmap-login.png" library="img"
+					width="100%" height="100%" />
+
+				<div class="p-col-12">
+					<p:outputLabel value="Bem vindo(a) ao AssinaMap"/>
+				</div>
+
+				<div class="p-col-12">
+					<span class="ui-float-label"> <p:inputText
+							onkeypress="mascaraMutuario(this,cpfCnpj)" maxlength="18"
+							value="#{MBLogin.usuario.cpfCnpj}" /> <p:outputLabel
+							for="@previous" value="CPF / CNPJ" />
+					</span>
+				</div>
+				<div class="p-col-12">
+					<span class="ui-float-label"> <p:password
+							value="#{MBLogin.usuario.senha}" /> <p:outputLabel
+							for="@previous" value="Senha" />
+					</span>
+				</div>
+				<div class="p-col-12">
+					<p:commandButton value="Entrar" style="width: 100%"
+						icon="pi pi-sign-in" actionListener="#{MBLogin.logar()}"
+						update="growl" />
+					<p:button value="Esqueci a senha" style="width: 100%"
+						styleClass="ui-button-secondary" icon="pi pi-question-circle"
+						outcome="redefinir-senha" />
+				</div>
+
+				<div class="p-col-12">
+					<div align="center">
+						<p:link href="http://gemmap.com.br/"
+							value="Powered by Gemmap Sistemas" target="_blank" />
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<h:outputStylesheet name="css/primeicons.css" library="ultima-layout" />
+		<h:outputStylesheet name="css/primeflex.min.css"
+			library="ultima-layout" />
+		<h:outputStylesheet name="css/ripple.css" library="ultima-layout" />
+		<h:outputStylesheet name="css/layout-blue.css" library="ultima-layout" />
+		<h:outputScript name="script.js" library="js" />
+		<h:outputScript name="mascara.js" library="js" />
+	</h:form>
+</h:body>
+
+</html>

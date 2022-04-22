@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Imobiliaria</title>
+	<h:outputStylesheet library="css" name="estilos.css" />
+</h:head>
+<h:body>
+	<h:form>
+		<div id="geral">
+
+			<div id="cabecalho">
+				<p:menubar>
+					<p:submenu label="Perfil">
+						<p:menuitem value="Cadastrar"/>
+						<p:menuitem value="Login" />
+						<p:menuitem value="Editar dados" />
+						<p:menuitem value="Alterar senha" />
+						<p:menuitem value="Sair" />
+					</p:submenu>
+
+					<p:submenu label="Imóveis">
+						<p:menuitem value="Cadastrar imóvel" />
+						<p:menuitem value="Meus imóveis" />
+					</p:submenu>
+
+					<p:submenu label="Reservas">
+						<p:menuitem value="Minhas reservas" />
+					</p:submenu>
+				</p:menubar>
+			</div>
+
+			<div id="conteudo"></div>
+		</div>
+	</h:form>
+</h:body>
+</html>

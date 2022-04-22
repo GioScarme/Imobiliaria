@@ -32,12 +32,16 @@ public class Usuario extends GenericDomain {
 	@Column(length = 15, nullable = false)
 	private String telefone;
 	
-	@OneToOne //chave estrangeira 1 para 1, usuário possui apenas um endereço, e o mesmo endereço possui apenas um usuário
-	@JoinColumn(nullable = false) // personalizar chaves estrangeiras
-	private Endereco endereco;
+	@Column(length = 50, nullable = false)
+	private String enderecoCompleto;
+	
+//	@OneToOne //chave estrangeira 1 para 1, usuário possui apenas um endereço, e o mesmo endereço possui apenas um usuário
+//	@JoinColumn(nullable = false) // personalizar chaves estrangeiras
+//	private Endereco endereco;
 	
 	@Column(nullable = false)
 	private Boolean ativo;
+	
 
 	public String getNome() {
 		return nome;
@@ -87,12 +91,12 @@ public class Usuario extends GenericDomain {
 		this.telefone = telefone;
 	}
 
-	public Endereco getEndereco() {
-		return endereco;
+	public String getEnderecoCompleto() {
+		return enderecoCompleto;
 	}
-
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
+	
+	public void setEnderecoCompleto(String enderecoCompleto) {
+		this.enderecoCompleto = enderecoCompleto;
 	}
 
 	public Boolean getAtivo() {
