@@ -46,6 +46,10 @@ public class Imovel extends GenericDomain {
 	
 	@Column(nullable = false)
 	private Boolean ativo;
+	
+	@ManyToOne
+	@JoinColumn(nullable = false)
+	private Cidade cidade;
 
 	public String getCaminhoDocumento() {
 		return caminhoDocumento;
@@ -125,6 +129,14 @@ public class Imovel extends GenericDomain {
 
 	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
+	}
+	
+	public Cidade getCidade() {
+		return cidade;
+	}
+	
+	public void setCidade(Cidade cidade) {
+		this.cidade = cidade;
 	}
 
 }

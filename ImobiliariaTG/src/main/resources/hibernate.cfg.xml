@@ -33,6 +33,7 @@
 		<property name="hbm2ddl.auto">validate</property>
 		
 		<!-- Mapeamento das Entidades -->
+		<mapping class="br.com.imobiliaria.domain.Cidade" />
 		<mapping class="br.com.imobiliaria.domain.Usuario" />
 		<mapping class="br.com.imobiliaria.domain.Imovel" />
 		<mapping class="br.com.imobiliaria.domain.AvaliacaoImovel" />

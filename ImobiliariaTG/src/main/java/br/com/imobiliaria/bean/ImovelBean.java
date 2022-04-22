@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -18,18 +19,21 @@ import org.omnifaces.util.Messages;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 
+import br.com.imobiliaria.dao.CidadeDAO;
 import br.com.imobiliaria.dao.ImovelDAO;
 import br.com.imobiliaria.dao.UsuarioDAO;
+import br.com.imobiliaria.domain.Cidade;
 import br.com.imobiliaria.domain.Imovel;
 import br.com.imobiliaria.domain.Usuario;
 
 @SuppressWarnings("serial")
 @ManagedBean
 @ViewScoped
-public class ImovelBean {
+public class ImovelBean implements Serializable{
 	private Imovel imovel;
 	private List<Imovel> imoveis;
 	private List<Usuario> usuarios;
+	private List<Cidade> cidades;
 	private UploadedFile file;
 
 	@PostConstruct // chamar o método listar no momento em que a tela é criada
@@ -49,6 +53,9 @@ public class ImovelBean {
 
 			UsuarioDAO usuarioDAO = new UsuarioDAO();
 			usuarios = usuarioDAO.listar();
+			
+			CidadeDAO cidadeDAO = new CidadeDAO();
+			cidades = cidadeDAO.listar();
 
 		} catch (RuntimeException erro) {
 			Messages.addGlobalError("Ocorreu um erro ao tentar incluir um novo imóvel");
@@ -67,6 +74,9 @@ public class ImovelBean {
 
 			UsuarioDAO usuarioDAO = new UsuarioDAO();
 			usuarios = usuarioDAO.listar();
+			
+			CidadeDAO cidadeDAO = new CidadeDAO();
+			cidades = cidadeDAO.listar();
 
 			Messages.addGlobalInfo("Imóvel Salvo com sucesso!");
 		} catch (RuntimeException erro) {
@@ -146,6 +156,21 @@ public class ImovelBean {
 			erro.printStackTrace();
 		}
 	}
+	
+	public void editar(ActionEvent evento) {
+		try {
+			imovel = (Imovel) evento.getComponent().getAttributes().get("imovelSelecionado");
+
+			UsuarioDAO usuarioDAO = new UsuarioDAO();
+			usuarios = usuarioDAO.listar();
+			
+			CidadeDAO cidadeDAO = new CidadeDAO();
+			cidades = cidadeDAO.listar();
+		} catch (RuntimeException erro) {
+			Messages.addFlashGlobalError("Ocorreu um erro ao tentar editar o imóvel");
+			erro.printStackTrace();
+		}	
+	}
 
 	// -----------Getter and Setters
 	public Imovel getImovel() {
@@ -170,6 +195,14 @@ public class ImovelBean {
 
 	public void setUsuarios(List<Usuario> usuarios) {
 		this.usuarios = usuarios;
+	}
+	
+	public List<Cidade> getCidades() {
+		return cidades;
+	}
+	
+	public void setCidades(List<Cidade> cidades) {
+		this.cidades = cidades;
 	}
 
 	public UploadedFile getFile() {
