@@ -1,79 +1,78 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Reservas</title>
-</h:head>
-<h:body>
-	<h:form>
-		<p:panel header="Reserva - Listagem">
-			<p:dataTable emptyMessage="Nenhum registro encontrado."
-				paginator="true">
-				<f:facet name="header">
-					<p:commandButton value="Novo" oncomplete="PF('dialogo').show();" />
-				</f:facet>
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/template/modelo.xhtml">
 
-				<p:column headerText="Usuário solicitante">
-				</p:column>
-
-				<p:column headerText="Imóvel">
-				</p:column>
-				
-				<p:column headerText="Data inicio">
-				</p:column>
-				
-				<p:column headerText="Data fim">
-				</p:column>
-				
-				<p:column headerText="Valor Total">
-				</p:column>
-				
-				<p:column headerText="Status">
-				</p:column>
-
-				<p:column headerText="Opções">
-				</p:column>
-			</p:dataTable>
-		</p:panel>
-	</h:form>
-
-	<p:dialog header="Produtos - Cadastro" widgetVar="dialogo"
-		draggable="false" resizable="false" modal="true" closable="false">
+	<ui:define name="conteudo">
 		<h:form>
-			<h:panelGrid columns="2">
-				<p:outputLabel value="Usuário solicitante:" />
-				<p:selectOneMenu filter="true">
-					<f:selectItem itemValue="" itemLabel="Selecione um usuário" />
-				</p:selectOneMenu>
-				
-				<p:outputLabel value="Imóvel:" />
-				<p:selectOneMenu filter="true">
-					<f:selectItem itemValue="" itemLabel="Selecione um imóvel" />
-				</p:selectOneMenu>
-				
-				<p:outputLabel value="Data inicio:" />
-				<p:inputText maxlength="50" size="30" />
-				
-				<p:outputLabel value="Data fim:" />
-				<p:inputText maxlength="50" size="30" />
-				
-				<p:outputLabel value="Valor Total:" />
-				<p:inputText maxlength="7" size="10" />	
-				
-				<p:outputLabel value="Status:" />
-				<p:inputText maxlength="50" size="30" />
-				
-			</h:panelGrid>
+			<p:panel header="Reserva - Listagem">
+				<p:dataTable emptyMessage="Nenhum registro encontrado."
+					paginator="true">
+					<f:facet name="header">
+						<p:commandButton value="Novo" oncomplete="PF('dialogo').show();" />
+					</f:facet>
 
-			<h:panelGrid columns="2">
-				<p:commandButton value="Salvar" />
-				<p:commandButton value="Fechar" oncomplete="PF('dialogo').hide();" />
-			</h:panelGrid>
+					<p:column headerText="Usuário solicitante">
+					</p:column>
+
+					<p:column headerText="Imóvel">
+					</p:column>
+
+					<p:column headerText="Data inicio">
+					</p:column>
+
+					<p:column headerText="Data fim">
+					</p:column>
+
+					<p:column headerText="Valor Total">
+					</p:column>
+
+					<p:column headerText="Status">
+					</p:column>
+
+					<p:column headerText="Opções">
+					</p:column>
+				</p:dataTable>
+			</p:panel>
 		</h:form>
-	</p:dialog>
-</h:body>
-</html>
+
+		<p:dialog header="Produtos - Cadastro" widgetVar="dialogo"
+			draggable="false" resizable="false" modal="true" closable="false">
+			<h:form>
+				<h:panelGrid columns="2">
+					<p:outputLabel value="Usuário solicitante:" />
+					<p:selectOneMenu filter="true">
+						<f:selectItem itemValue="" itemLabel="Selecione um usuário" />
+					</p:selectOneMenu>
+
+					<p:outputLabel value="Imóvel:" />
+					<p:selectOneMenu filter="true">
+						<f:selectItem itemValue="" itemLabel="Selecione um imóvel" />
+					</p:selectOneMenu>
+
+					<p:outputLabel value="Data inicio:" />
+					<p:inputText maxlength="50" size="30" />
+
+					<p:outputLabel value="Data fim:" />
+					<p:inputText maxlength="50" size="30" />
+
+					<p:outputLabel value="Valor Total:" />
+					<p:inputText maxlength="7" size="10" />
+
+					<p:outputLabel value="Status:" />
+					<p:inputText maxlength="50" size="30" />
+
+				</h:panelGrid>
+
+				<h:panelGrid columns="2">
+					<p:commandButton value="Salvar" />
+					<p:commandButton value="Fechar" oncomplete="PF('dialogo').hide();" />
+				</h:panelGrid>
+			</h:form>
+		</p:dialog>
+	</ui:define>
+</ui:composition>

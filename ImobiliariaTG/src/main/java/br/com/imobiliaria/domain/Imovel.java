@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 @SuppressWarnings("serial")
 @Entity
@@ -50,6 +51,9 @@ public class Imovel extends GenericDomain {
 	@ManyToOne
 	@JoinColumn(nullable = false)
 	private Cidade cidade;
+	
+	@Transient
+	private String caminhoFoto;
 
 	public String getCaminhoDocumento() {
 		return caminhoDocumento;
@@ -137,6 +141,14 @@ public class Imovel extends GenericDomain {
 	
 	public void setCidade(Cidade cidade) {
 		this.cidade = cidade;
+	}
+	
+	public String getCaminhoFoto() {
+		return caminhoFoto;
+	}
+	
+	public void setCaminhoFoto(String caminhoFoto) {
+		this.caminhoFoto = caminhoFoto;
 	}
 
 }

@@ -6,6 +6,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -23,22 +27,25 @@ import br.com.imobiliaria.dao.CidadeDAO;
 import br.com.imobiliaria.dao.ImovelDAO;
 import br.com.imobiliaria.dao.UsuarioDAO;
 import br.com.imobiliaria.domain.Cidade;
+import br.com.imobiliaria.domain.ImagemImovel;
 import br.com.imobiliaria.domain.Imovel;
 import br.com.imobiliaria.domain.Usuario;
 
 @SuppressWarnings("serial")
 @ManagedBean
 @ViewScoped
-public class ImovelBean implements Serializable{
+public class ImovelBean implements Serializable {
 	private Imovel imovel;
 	private List<Imovel> imoveis;
 	private List<Usuario> usuarios;
 	private List<Cidade> cidades;
+	private Cidade cidade;
 	private UploadedFile file;
 
 	@PostConstruct // chamar o método listar no momento em que a tela é criada
 	public void listar() {
 		try {
+			imovel = new Imovel();
 			ImovelDAO imovelDAO = new ImovelDAO();
 			imoveis = imovelDAO.listar();
 		} catch (RuntimeException erro) {
@@ -53,7 +60,7 @@ public class ImovelBean implements Serializable{
 
 			UsuarioDAO usuarioDAO = new UsuarioDAO();
 			usuarios = usuarioDAO.listar();
-			
+
 			CidadeDAO cidadeDAO = new CidadeDAO();
 			cidades = cidadeDAO.listar();
 
@@ -67,19 +74,23 @@ public class ImovelBean implements Serializable{
 		try {
 
 			ImovelDAO imovelDAO = new ImovelDAO();
-			imovelDAO.merge(imovel);
+			Imovel imovelRetorno = imovelDAO.merge(imovel);
+
+			Path origem = Paths.get(imovel.getCaminhoFoto());
+			Path destino = Paths.get("C:/TG JAVA/Uploads/" + imovelRetorno.getCodigo() + ".png");
+			Files.copy(origem, destino, StandardCopyOption.REPLACE_EXISTING);
 
 			imoveis = imovelDAO.listar();
 			novo();
 
 			UsuarioDAO usuarioDAO = new UsuarioDAO();
 			usuarios = usuarioDAO.listar();
-			
+
 			CidadeDAO cidadeDAO = new CidadeDAO();
 			cidades = cidadeDAO.listar();
 
 			Messages.addGlobalInfo("Imóvel Salvo com sucesso!");
-		} catch (RuntimeException erro) {
+		} catch (RuntimeException | IOException erro) {
 			Messages.addGlobalError("Ocorreu um erro ao salvar o Imóvel!");
 			erro.printStackTrace(); // serve pra imprimir o erro
 		}
@@ -141,35 +152,78 @@ public class ImovelBean implements Serializable{
 		}
 	}
 
+	public void uploadFoto(FileUploadEvent evento) {
+		try {
+			UploadedFile arquivoUpload = evento.getFile(); // arquivo atual
+			Path arquivoTemp = Files.createTempFile(null, null); // arquivo
+																	// temporario
+			Files.copy(arquivoUpload.getInputstream(), arquivoTemp, StandardCopyOption.REPLACE_EXISTING); // vai
+																											// copiar
+																											// o
+																											// arquivo
+																											// atual
+																											// para
+																											// o
+																											// temporário
+
+			imovel.setCaminhoFoto(arquivoTemp.toString());
+
+			Messages.addGlobalInfo("Upload realizado com sucesso");
+
+		} catch (IOException erro) {
+			Messages.addGlobalError("Ocorreu um erro ao tentar realizar o upload do arquivo");
+			erro.printStackTrace();
+		}
+	}
+
 	public void excluir(ActionEvent evento) {
 		try {
 			imovel = (Imovel) evento.getComponent().getAttributes().get("imovelSelecionado");
 
 			ImovelDAO imovelDAO = new ImovelDAO();
 			imovelDAO.excluir(imovel);
-			
+
+			Path arquivo = Paths.get("C:/TG JAVA/Uploads/" + imovel.getCodigo() + ".png");
+			Files.deleteIfExists(arquivo);
+
 			imoveis = imovelDAO.listar();
 
 			Messages.addGlobalInfo("Imóvel removido com sucesso");
-		} catch (RuntimeException erro) {
+		} catch (RuntimeException | IOException erro) {
 			Messages.addFlashGlobalError("Ocorreu um erro ao tentar remover o imóvel");
 			erro.printStackTrace();
 		}
 	}
-	
+
 	public void editar(ActionEvent evento) {
 		try {
 			imovel = (Imovel) evento.getComponent().getAttributes().get("imovelSelecionado");
 
 			UsuarioDAO usuarioDAO = new UsuarioDAO();
 			usuarios = usuarioDAO.listar();
-			
+
 			CidadeDAO cidadeDAO = new CidadeDAO();
 			cidades = cidadeDAO.listar();
 		} catch (RuntimeException erro) {
 			Messages.addFlashGlobalError("Ocorreu um erro ao tentar editar o imóvel");
 			erro.printStackTrace();
-		}	
+		}
+	}
+
+	public void buscarImovel() {
+		try {
+			ImovelDAO imovelDAO = new ImovelDAO();
+			List<Imovel> resultado = imovelDAO.buscarImovelCidade(imovel);
+
+			if (resultado == null) {
+				Messages.addGlobalError("O imóvel não existe");
+			}else{
+				imoveis = resultado;
+			}
+		} catch (RuntimeException erro) {
+			Messages.addFlashGlobalError("Ocorreu um erro ao tentar editar o imóvel");
+			erro.printStackTrace();
+		}
 	}
 
 	// -----------Getter and Setters
@@ -196,11 +250,11 @@ public class ImovelBean implements Serializable{
 	public void setUsuarios(List<Usuario> usuarios) {
 		this.usuarios = usuarios;
 	}
-	
+
 	public List<Cidade> getCidades() {
 		return cidades;
 	}
-	
+
 	public void setCidades(List<Cidade> cidades) {
 		this.cidades = cidades;
 	}
@@ -211,5 +265,13 @@ public class ImovelBean implements Serializable{
 
 	public void setFile(UploadedFile file) {
 		this.file = file;
+	}
+
+	public Cidade getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(Cidade cidade) {
+		this.cidade = cidade;
 	}
 }

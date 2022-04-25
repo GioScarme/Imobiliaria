@@ -1,14 +1,62 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-	
-	<ui:composition template="/template/modelo.xhtml">
-		<ui:define name="conteudo"> <!-- tag que vai definir -->
-			<h:outputText value="Bem vindo ao Sistema para o Gerenciamento de Drogarias"/>
-		</ui:define>
-	</ui:composition>
-</html>
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/template/modelo.xhtml">
+
+	<ui:define name="conteudo">
+
+		<h:form id="formulario">
+			<p:panel>
+				<h:panelGrid columns="3">
+					<p:outputLabel for="cidade" value="Cidade:" />
+					<p:inputText id="cidade" size="20" maxlength="13"
+						value="#{imovelBean.imovel.cidade}">
+					</p:inputText>
+					<p:commandButton icon="ui-icon-search"
+						update=":mensagem :formulario:tabela"
+						actionListener="#{imovelBean.buscarImovel}" />
+				</h:panelGrid>
+
+				<p:dataTable id="tabela" emptyMessage="Nenhum registro encontrado."
+					paginator="true" rows="5" value="#{imovelBean.imoveis}"
+					var="imovel" paginatorPosition="top">
+
+					<p:column headerText="Cidade">
+						<h:outputText value="#{imovel.cidade.nome}" />
+						<h:outputText value=" - " />
+						<h:outputText value="#{imovel.cidade.estado}" />
+					</p:column>
+
+					<p:column headerText="Usuário">
+						<h:outputText value="#{imovel.usuario.nome}" />
+					</p:column>
+
+					<p:column headerText="Descrição">
+						<h:outputText value="#{imovel.observacoes}" />
+					</p:column>
+
+					<p:column headerText="Endereço">
+						<h:outputText value="#{imovel.enderecoCompleto}" />
+					</p:column>
+
+					<p:column headerText="Valor Diária">
+						<h:outputText value="#{imovel.valorDiaria}" />
+					</p:column>
+
+					<p:column headerText="Regras do proprietário">
+						<h:outputText value="#{imovel.regrasProprietario}" />
+					</p:column>
+
+					<p:column headerText="Ativo">
+						<p:selectBooleanCheckbox value="#{imovel.ativo}" disabled="true" />
+					</p:column>
+				</p:dataTable>
+
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>

@@ -1,152 +1,167 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Imovel</title>
-</h:head>
-<h:body>
-<p:growl id="mensagem"/>
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/template/modelo.xhtml">
+
+	<ui:define name="conteudo">
+
 	<h:form id="frmListagem">
 		<p:panel header="Imóvel - Listagem">
 			<p:dataTable id="tabela" emptyMessage="Nenhum registro encontrado."
-				paginator="true" rows="5"
-				value="#{imovelBean.imoveis}" var="imovel">
+				paginator="true" rows="5" value="#{imovelBean.imoveis}" var="imovel"
+				paginatorPosition="top">
 				<f:facet name="header">
-					<p:commandButton value="Novo" oncomplete="PF('dialogo').show();" 
-					actionListener="#{imovelBean.novo}"
-					update=":frmCadastro:painel"/>
+					<p:commandButton value="Novo" oncomplete="PF('dialogo').show();"
+						actionListener="#{imovelBean.novo}" update=":frmCadastro:painel" />
 				</f:facet>
-				
-				<p:column headerText="Cidade" sortBy="#{imovel.cidade.nome}" filterBy="#{imovel.cidade.nome}">
-				<h:outputText value="#{imovel.cidade.nome}" />
-				<h:outputText value=" - " />
-				<h:outputText value="#{imovel.cidade.estado}" />
-				</p:column>
-				
-				<p:column headerText="Usuário" sortBy="#{imovel.usuario.nome}" filterBy="#{imovel.usuario.nome}">
-				<h:outputText value="#{imovel.usuario.nome}" />
+
+				<p:column headerText="Cidade" sortBy="#{imovel.cidade.nome}"
+					filterBy="#{imovel.cidade.nome}">
+					<h:outputText value="#{imovel.cidade.nome}" />
+					<h:outputText value=" - " />
+					<h:outputText value="#{imovel.cidade.estado}" />
 				</p:column>
 
-				<p:column headerText="Descrição" sortBy="#{imovel.observacoes}" filterBy="#{imovel.observacoes}">
-				<h:outputText value="#{imovel.observacoes}" />
+				<p:column headerText="Usuário" sortBy="#{imovel.usuario.nome}"
+					filterBy="#{imovel.usuario.nome}">
+					<h:outputText value="#{imovel.usuario.nome}" />
+				</p:column>
+
+				<p:column headerText="Descrição" sortBy="#{imovel.observacoes}"
+					filterBy="#{imovel.observacoes}">
+					<h:outputText value="#{imovel.observacoes}" />
 				</p:column>
 
 				<p:column headerText="Endereço">
-				<h:outputText value="#{imovel.enderecoCompleto}" />
+					<h:outputText value="#{imovel.enderecoCompleto}" />
 				</p:column>
-				
+
 				<p:column headerText="Valor Diária">
-				<h:outputText value="#{imovel.valorDiaria}" />
+					<h:outputText value="#{imovel.valorDiaria}" />
 				</p:column>
-				
+
 				<p:column headerText="Regras do proprietário">
-				<h:outputText value="#{imovel.regrasProprietario}" />
+					<h:outputText value="#{imovel.regrasProprietario}" />
 				</p:column>
-				
+
 				<p:column headerText="Ativo">
-				<p:selectBooleanCheckbox value="#{imovel.ativo}" disabled="true" />
+					<p:selectBooleanCheckbox value="#{imovel.ativo}" disabled="true" />
 				</p:column>
 
 				<p:column headerText="Opções">
-					<p:commandButton icon="ui-icon-trash" actionListener="#{imovelBean.excluir}"
-					update=":mensagem :frmListagem:tabela">
+					<p:commandButton icon="ui-icon-trash"
+						actionListener="#{imovelBean.excluir}"
+						update=":mensagem :frmListagem:tabela">
 						<p:confirm header="Confirmação" message="Deseja excluir o imóvel?"
 							icon="ui-icon-alert" />
-							<f:attribute name="imovelSelecionado" value="#{imovel}"/>
+						<f:attribute name="imovelSelecionado" value="#{imovel}" />
 					</p:commandButton>
-					
+
 					<p:commandButton icon="ui-icon-pencil"
-						actionListener="#{imovelBean.editar}"
-						update=":frmCadastro:painel"
+						actionListener="#{imovelBean.editar}" update=":frmCadastro:painel"
 						oncomplete="PF('dialogo').show();">
 						<f:attribute name="imovelSelecionado" value="#{imovel}" />
 					</p:commandButton>
 				</p:column>
 			</p:dataTable>
-			
+
 			<p:confirmDialog global="true">
-				 <p:commandButton  value =" Sim " type =" button "
-					styleClass =" ui-confirmdialog-yes " icon =" ui-icon-check " />
-				<p:commandButton  value =" Não " type =" button "
-					styleClass =" ui-confirmdialog-no " icon =" ui-icon-close " />
+				<p:commandButton value=" Sim " type=" button "
+					styleClass=" ui-confirmdialog-yes " icon=" ui-icon-check " />
+				<p:commandButton value=" Não " type=" button "
+					styleClass=" ui-confirmdialog-no " icon=" ui-icon-close " />
 			</p:confirmDialog>
 		</p:panel>
 	</h:form>
 
 	<p:dialog header="Imóvel - Cadastro" widgetVar="dialogo"
 		draggable="false" resizable="false" modal="true" closable="false">
-		<h:form id="frmCadastro">
+		<h:form id="frmCadastro" enctype="multipart/form-data">
 			<h:panelGrid id="painel" columns="2">
-			
+
 				<p:outputLabel value="Cidade:" />
 				<p:selectOneMenu id="cidade" filter="true"
 					value="#{imovelBean.imovel.cidade}" required="true"
 					requiredMessage="O campo 'Cidade' é obrigatório"
 					converter="omnifaces.SelectItemsConverter">
-					<f:selectItem noSelectionOption="true" itemLabel="Selecione uma cidade"/>
+					<f:selectItem noSelectionOption="true"
+						itemLabel="Selecione uma cidade" />
 					<f:selectItems value="#{imovelBean.cidades}" var="cidade"
-						itemValue="#{cidade}" itemLabel="#{cidade.nome} - #{cidade.estado}"/>
+						itemValue="#{cidade}"
+						itemLabel="#{cidade.nome} - #{cidade.estado}" />
 				</p:selectOneMenu>
-				
+
 				<p:outputLabel value="Descrição:" />
-				<p:inputText maxlength="50" size="30" value="#{imovelBean.imovel.observacoes}"/>
-				
+				<p:inputText maxlength="50" size="30"
+					value="#{imovelBean.imovel.observacoes}" />
+
 				<p:outputLabel value="Endereço:" />
-				<p:inputText maxlength="50" size="30" value="#{imovelBean.imovel.enderecoCompleto}"/>
-				
+				<p:inputText maxlength="50" size="30"
+					value="#{imovelBean.imovel.enderecoCompleto}" />
+
 				<p:outputLabel value="Valor Diária:" />
-				<p:inputText maxlength="7" size="10" value="#{imovelBean.imovel.valorDiaria}"/>	
-				
+				<p:inputText maxlength="7" size="10"
+					value="#{imovelBean.imovel.valorDiaria}" />
+
 				<p:outputLabel value="Documento do imóvel:" />
 				<p:fileUpload multiple="true" label="Selecionar Arquivos"
-								sizeLimit="12240000"
-								allowTypes="/(\.|\/)(pdf)$/"
-								invalidSizeMessage="O tamanho de arquivo máximo é de 10 MB"
-								invalidFileMessage="apenas pdf"
-								sequential="true"
-								update="msgFile" mode="advanced" dragDropSupport="false"
-								auto="true" fileLimit="10" value="#{imovelBean.imovel.caminhoDocumento}"
-								fileUploadListener="#{imovelBean.handleFileUpload}">
-								<p:growl id="msgFile" showDetail="true" keepAlive="true" />
-							</p:fileUpload>
-				
+					sizeLimit="12240000" allowTypes="/(\.|\/)(pdf)$/"
+					invalidSizeMessage="O tamanho de arquivo máximo é de 10 MB"
+					invalidFileMessage="apenas pdf" sequential="true" update="msgFile"
+					mode="advanced" dragDropSupport="false" auto="true" fileLimit="10"
+					value="#{imovelBean.imovel.caminhoDocumento}"
+					fileUploadListener="#{imovelBean.handleFileUpload}">
+					<p:growl id="msgFile" showDetail="true" keepAlive="true" />
+				</p:fileUpload>
+
 				<p:outputLabel value="Regras do proprietário:" />
-				<p:inputText maxlength="50" size="30" value="#{imovelBean.imovel.regrasProprietario}"/>
-				
+				<p:inputText maxlength="50" size="30"
+					value="#{imovelBean.imovel.regrasProprietario}" />
+
 				<p:outputLabel value="Quantidade de cômodos:" />
-				<p:inputText maxlength="2" size="3" value="#{imovelBean.imovel.qtdComodos}"/>	
-				
+				<p:inputText maxlength="2" size="3"
+					value="#{imovelBean.imovel.qtdComodos}" />
+
 				<p:outputLabel value="Quantidade de camas:" />
-				<p:inputText maxlength="2" size="3" value="#{imovelBean.imovel.qtdCamas}"/>	
-				
+				<p:inputText maxlength="2" size="3"
+					value="#{imovelBean.imovel.qtdCamas}" />
+
 				<p:outputLabel value="Quantidade de banheiros:" />
-				<p:inputText maxlength="2" size="3" value="#{imovelBean.imovel.qtdBanheiros}"/>	
-				
+				<p:inputText maxlength="2" size="3"
+					value="#{imovelBean.imovel.qtdBanheiros}" />
+
 				<p:outputLabel value="Usuário:" />
 				<p:selectOneMenu id="usuario" filter="true"
 					value="#{imovelBean.imovel.usuario}" required="true"
 					requiredMessage="O campo 'Usuario' é obrigatório"
 					converter="omnifaces.SelectItemsConverter">
-					<f:selectItem noSelectionOption="true" itemLabel="Selecione um usuário"/>
+					<f:selectItem noSelectionOption="true"
+						itemLabel="Selecione um usuário" />
 					<f:selectItems value="#{imovelBean.usuarios}" var="usuario"
-						itemValue="#{usuario}" itemLabel="#{usuario.nome} - #{usuario.cpf}"/>
+						itemValue="#{usuario}"
+						itemLabel="#{usuario.nome} - #{usuario.cpf}" />
 				</p:selectOneMenu>
-				
+
 				<p:outputLabel value="Ativo:" />
-				<p:selectBooleanCheckbox  value="#{imovelBean.imovel.ativo}" />
-				
+				<p:selectBooleanCheckbox value="#{imovelBean.imovel.ativo}" />
+
+				<p:outputLabel value="Imagens do Imóvel:" />
+				<p:fileUpload id="foto" mode="advanced" auto="true"
+					fileUploadListener="#{imovelBean.uploadFoto}" update=":mensagem" />
+
 			</h:panelGrid>
 
 			<h:panelGrid columns="2">
-				<p:commandButton value="Salvar" actionListener="#{imovelBean.salvar}"
-				update=":mensagem :frmCadastro:painel :frmListagem:tabela"/>
+				<p:commandButton value="Salvar"
+					actionListener="#{imovelBean.salvar}"
+					update=":mensagem :frmCadastro:painel :frmListagem:tabela" />
 				<p:commandButton value="Fechar" oncomplete="PF('dialogo').hide();" />
 			</h:panelGrid>
 		</h:form>
 	</p:dialog>
-</h:body>
-</html>
+	</ui:define>
+</ui:composition>

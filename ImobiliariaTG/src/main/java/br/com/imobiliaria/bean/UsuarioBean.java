@@ -24,6 +24,7 @@ public class UsuarioBean implements Serializable {
 	public void listar() {
 		try {
 			UsuarioDAO usuarioDAO = new UsuarioDAO();
+			usuario = new Usuario();
 			usuarios = usuarioDAO.listar();
 		} catch (RuntimeException erro) {
 			Messages.addGlobalError("Ocorreu um erro ao listar os usuários");
@@ -47,8 +48,8 @@ public class UsuarioBean implements Serializable {
 			UsuarioDAO usuarioDAO = new UsuarioDAO();
 			usuarioDAO.merge(usuario);
 
-			usuarios = usuarioDAO.listar();
-			novo();
+//			usuarios = usuarioDAO.listar();
+//			novo();
 			Messages.addGlobalInfo("Usuário Salvo com sucesso!");
 		} catch (RuntimeException erro) {
 			Messages.addGlobalError("Ocorreu um erro ao salvar o usuário!");
