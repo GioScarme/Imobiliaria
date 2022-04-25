@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/template/modelo.xhtml">
+
+	<ui:define name="conteudo">
+	<div align="center">
+		<p:panel>
+				<h:form id="frmCadastroUsuario">
+					<h:outputText value="Editar" style="font-size: 20px; font-weight: bold;"/>
+					<h:panelGrid id="painel" columns="2">
+						<p:outputLabel value="Nome:" />
+						<p:inputText maxlength="50" size="30"
+							value="#{usuarioBean.usuario.nome}" />
+
+						<p:outputLabel value="CPF:" />
+						<p:inputText maxlength="50" size="30"
+							value="#{usuarioBean.usuario.cpf}" />
+
+						<p:outputLabel value="Data Nascimento:" />
+						<p:calendar value="#{usuarioBean.usuario.dataNascimento}" />
+
+						<p:outputLabel value="E-mail:" />
+						<p:inputText maxlength="50" size="30"
+							value="#{usuarioBean.usuario.login}" />
+
+						<p:outputLabel value="Senha:" />
+						<p:password maxlength="8" size="10"
+							value="#{usuarioBean.usuario.senha}" />
+
+						<p:outputLabel value="Telefone:" />
+						<p:inputText maxlength="50" size="30"
+							value="#{usuarioBean.usuario.telefone}" />
+
+						<p:outputLabel value="Endereço Completo:" />
+						<p:inputText maxlength="50" size="30"
+							value="#{usuarioBean.usuario.enderecoCompleto}" />
+
+						<p:outputLabel value="Ativo:" />
+						<p:selectBooleanCheckbox value="#{usuarioBean.usuario.ativo}" />
+
+					</h:panelGrid>
+
+					<h:panelGrid columns="2">
+						<p:commandButton value="Salvar"
+							update=":mensagem"
+							actionListener="#{usuarioBean.editar}" />
+					</h:panelGrid>
+				</h:form>
+		</p:panel>
+		</div>
+	</ui:define>
+</ui:composition>

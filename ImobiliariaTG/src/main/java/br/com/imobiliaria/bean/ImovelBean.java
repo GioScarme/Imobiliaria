@@ -41,6 +41,7 @@ public class ImovelBean implements Serializable {
 	private List<Cidade> cidades;
 	private Cidade cidade;
 	private UploadedFile file;
+	private Boolean exibeDados;
 
 	@PostConstruct // chamar o método listar no momento em que a tela é criada
 	public void listar() {
@@ -48,6 +49,7 @@ public class ImovelBean implements Serializable {
 			imovel = new Imovel();
 			ImovelDAO imovelDAO = new ImovelDAO();
 			imoveis = imovelDAO.listar();
+			exibeDados = false;
 		} catch (RuntimeException erro) {
 			Messages.addGlobalError("Ocorreu um erro ao listar os imóveis");
 			erro.printStackTrace();
@@ -219,6 +221,7 @@ public class ImovelBean implements Serializable {
 				Messages.addGlobalError("O imóvel não existe");
 			}else{
 				imoveis = resultado;
+				exibeDados = true;
 			}
 		} catch (RuntimeException erro) {
 			Messages.addFlashGlobalError("Ocorreu um erro ao tentar editar o imóvel");
@@ -273,5 +276,13 @@ public class ImovelBean implements Serializable {
 
 	public void setCidade(Cidade cidade) {
 		this.cidade = cidade;
+	}
+	
+	public Boolean getExibeDados() {
+		return exibeDados;
+	}
+	
+	public void setExibeDados(Boolean exibeDados) {
+		this.exibeDados = exibeDados;
 	}
 }
