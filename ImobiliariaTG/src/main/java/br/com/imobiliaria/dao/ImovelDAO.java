@@ -11,14 +11,15 @@ import br.com.imobiliaria.domain.Imovel;
 import br.com.imobiliaria.util.HibernateUtil;
 
 public class ImovelDAO extends GenericDAO<Imovel>{
+	
 	@SuppressWarnings("unchecked")
-	public List<Imovel> buscarImovelCidade(Imovel imovelSelecionado) {
+	public List<Imovel> buscarImovelCidade(String cidade) {
 		Session sessao = HibernateUtil.getFabricaDeSessoes().openSession();
 		try{
 		Imovel imovel = new Imovel();
 		
 			Criteria consulta = sessao.createCriteria(Imovel.class);
-			consulta.add(Restrictions.idEq(imovel.getCidade())); //serve para restringir o que eu quero buscar, no caso vai buscar através do código
+			consulta.add(Restrictions.idEq(imovel.getCidade().getNome())); //serve para restringir o que eu quero buscar, no caso vai buscar através do código
 			
 			return consulta.list();
 		} catch (RuntimeException erro) {

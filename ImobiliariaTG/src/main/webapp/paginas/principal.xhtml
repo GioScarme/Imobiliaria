@@ -14,7 +14,7 @@
 				<h:panelGrid columns="3">
 					<p:outputLabel for="cidade" value="Cidade:" />
 					<p:inputText id="cidade" size="20" maxlength="13"
-						value="#{imovelBean.imovel.cidade}">
+						value="#{imovelBean.imovel.cidade.nome}">
 					</p:inputText>
 					<p:commandButton icon="ui-icon-search" update=":mensagem :formulario:panelDados"
 						actionListener="#{imovelBean.buscarImovel}" />

@@ -8,6 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 @SuppressWarnings("serial")
 @Entity
@@ -23,11 +24,14 @@ public class Usuario extends GenericDomain {
 	@Temporal(TemporalType.DATE) //criar o campo do tipo data
 	private Date dataNascimento;
 
-	@Column(length = 50, nullable = false)
+	@Column(length = 50, nullable = false, unique = true)
 	private String login;
 
-	@Column(length = 15, nullable = false)
+	@Column(length = 32, nullable = false)
 	private String senha;
+	
+	@Transient //não vai ser salvo no banco
+	private String senhaSemCriptografia;
 
 	@Column(length = 15, nullable = false)
 	private String telefone;
@@ -105,6 +109,14 @@ public class Usuario extends GenericDomain {
 
 	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
+	}
+	
+	public String getSenhaSemCriptografia() {
+		return senhaSemCriptografia;
+	}
+	
+	public void setSenhaSemCriptografia(String senhaSemCriptografia) {
+		this.senhaSemCriptografia = senhaSemCriptografia;
 	}
 
 }

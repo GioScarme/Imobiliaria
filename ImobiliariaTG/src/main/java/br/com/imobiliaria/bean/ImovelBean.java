@@ -46,6 +46,7 @@ public class ImovelBean implements Serializable {
 	@PostConstruct // chamar o método listar no momento em que a tela é criada
 	public void listar() {
 		try {
+			cidade = new Cidade();
 			imovel = new Imovel();
 			ImovelDAO imovelDAO = new ImovelDAO();
 			imoveis = imovelDAO.listar();
@@ -215,7 +216,7 @@ public class ImovelBean implements Serializable {
 	public void buscarImovel() {
 		try {
 			ImovelDAO imovelDAO = new ImovelDAO();
-			List<Imovel> resultado = imovelDAO.buscarImovelCidade(imovel);
+			List<Imovel> resultado = imovelDAO.buscarImovelCidade(imovel.getCidade().getNome());
 
 			if (resultado == null) {
 				Messages.addGlobalError("O imóvel não existe");

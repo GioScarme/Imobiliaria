@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import org.apache.shiro.crypto.hash.SimpleHash;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -21,15 +22,19 @@ public class UsuarioDAOTest {
 //		Endereco endereco = enderecoDAO.buscar(codigoEndereco);
 
 		Usuario usuario = new Usuario();
-		usuario.setCpf("488.653.258-08");
+		usuario.setCpf("43265325806");
 		usuario.setAtivo(true);
-		usuario.setEnderecoCompleto("Rua Antonio Eldorado kckckc 1221");
+		usuario.setEnderecoCompleto("Rua Nicola Piccini");
 //		usuario.setEndereco(endereco);
-		usuario.setLogin("scarmegio@gmail.com");
-		usuario.setNome("Marianna Scarme de Mira");
-		usuario.setSenha("1234");
-		usuario.setTelefone("14 996524878");
-		usuario.setDataNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("19/06/2000"));
+		usuario.setLogin("scarmegiovanna@gmail.com");
+		usuario.setNome("Giovanna Scarme de Mira");
+		usuario.setSenhaSemCriptografia("123");
+		
+		SimpleHash hash = new SimpleHash("md5", usuario.getSenhaSemCriptografia());
+		usuario.setSenha(hash.toHex());
+		
+		usuario.setTelefone("(14) 99618-4885");
+		usuario.setDataNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("11/05/2002"));
 
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		usuarioDAO.salvar(usuario);
