@@ -39,6 +39,7 @@
 		<mapping class="br.com.imobiliaria.domain.AvaliacaoImovel" />
 		<mapping class="br.com.imobiliaria.domain.ImagemImovel" />
 		<mapping class="br.com.imobiliaria.domain.Reserva" />
+		<mapping class="br.com.imobiliaria.domain.Pessoa" />
 
 	</session-factory>
 

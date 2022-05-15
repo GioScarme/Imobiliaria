@@ -45,7 +45,7 @@ public class AvaliacaoImovelDAOTest {
 			System.out.println("Data: " + avaliacaoImovel.getData());
 			System.out.println("Cógido Imóvel: " + avaliacaoImovel.getImovel().getCodigo());
 			System.out.println("Nota: " + avaliacaoImovel.getNota());
-			System.out.println("Usuário: " + avaliacaoImovel.getUsuarioAvaliador().getNome());
+			System.out.println("Usuário: " + avaliacaoImovel.getUsuarioAvaliador().getPessoa().getNome());
 			System.out.println();
 		}
 	}
@@ -62,7 +62,7 @@ public class AvaliacaoImovelDAOTest {
 		System.out.println("Data: " + avaliacaoImovel.getData());
 		System.out.println("Cógido Imóvel: " + avaliacaoImovel.getImovel().getCodigo());
 		System.out.println("Nota: " + avaliacaoImovel.getNota());
-		System.out.println("Usuário: " + avaliacaoImovel.getUsuarioAvaliador().getNome());
+		System.out.println("Usuário: " + avaliacaoImovel.getUsuarioAvaliador().getPessoa().getNome());
 	}
 
 	@Test
@@ -80,7 +80,7 @@ public class AvaliacaoImovelDAOTest {
 		System.out.println("Data: " + avaliacaoImovel.getData());
 		System.out.println("Cógido Imóvel: " + avaliacaoImovel.getImovel().getCodigo());
 		System.out.println("Nota: " + avaliacaoImovel.getNota());
-		System.out.println("Usuário: " + avaliacaoImovel.getUsuarioAvaliador().getNome());
+		System.out.println("Usuário: " + avaliacaoImovel.getUsuarioAvaliador().getPessoa().getNome());
 	}
 	
 	@Test
@@ -103,7 +103,7 @@ public class AvaliacaoImovelDAOTest {
 		System.out.println("Data: " + avaliacaoImovel.getData());
 		System.out.println("Cógido Imóvel: " + avaliacaoImovel.getImovel().getCodigo());
 		System.out.println("Nota: " + avaliacaoImovel.getNota());
-		System.out.println("Usuário: " + avaliacaoImovel.getUsuarioAvaliador().getNome());
+		System.out.println("Usuário: " + avaliacaoImovel.getUsuarioAvaliador().getPessoa().getNome());
 		
 		avaliacaoImovel.setComentario("fgvnkoperjng");
 		avaliacaoImovel.setImovel(imovel);
@@ -116,6 +116,6 @@ public class AvaliacaoImovelDAOTest {
 		System.out.println("Data: " + avaliacaoImovel.getData());
 		System.out.println("Cógido Imóvel: " + avaliacaoImovel.getImovel().getCodigo());
 		System.out.println("Nota: " + avaliacaoImovel.getNota());
-		System.out.println("Usuário: " + avaliacaoImovel.getUsuarioAvaliador().getNome());
+		System.out.println("Usuário: " + avaliacaoImovel.getUsuarioAvaliador().getPessoa().getNome());
 	}
 }

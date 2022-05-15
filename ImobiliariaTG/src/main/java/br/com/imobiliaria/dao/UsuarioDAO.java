@@ -8,19 +8,22 @@ import org.hibernate.criterion.Restrictions;
 import br.com.imobiliaria.domain.Usuario;
 import br.com.imobiliaria.util.HibernateUtil;
 
-public class UsuarioDAO extends GenericDAO<Usuario>{
-	
-	public Usuario autenticar(String login, String senha){
+public class UsuarioDAO extends GenericDAO<Usuario> {
+
+	public Usuario autenticar(String email, String senha) {
 		Session sessao = HibernateUtil.getFabricaDeSessoes().openSession();
-		try{
+
+		try {
 			Criteria consulta = sessao.createCriteria(Usuario.class);
-			consulta.add(Restrictions.eq("login", login));
-			
+			consulta.createAlias("pessoa", "p");
+
+			consulta.add(Restrictions.eq("p.email", email));
+
 			SimpleHash hash = new SimpleHash("md5", senha);
 			consulta.add(Restrictions.eq("senha", hash.toHex()));
-			
+
 			Usuario resultado = (Usuario) consulta.uniqueResult();
-			
+
 			return resultado;
 		} catch (RuntimeException erro) {
 			throw erro;

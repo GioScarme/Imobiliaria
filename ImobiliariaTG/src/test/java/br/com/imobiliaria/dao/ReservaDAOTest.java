@@ -48,7 +48,7 @@ public class ReservaDAOTest {
 			System.out.println("Código: " + reserva.getCodigo());
 			System.out.println("Status: " + reserva.getStatus());
 			System.out.println("Código do Imóvel: " + reserva.getImovel().getCodigo());
-			System.out.println("Usuário: " + reserva.getUsuarioLocador().getNome());
+			System.out.println("Usuário: " + reserva.getUsuarioLocador().getPessoa().getNome());
 			System.out.println();
 		}
 	}
@@ -64,7 +64,7 @@ public class ReservaDAOTest {
 		System.out.println("Código: " + reserva.getCodigo());
 		System.out.println("Status: " + reserva.getStatus());
 		System.out.println("Código do Imóvel: " + reserva.getImovel().getCodigo());
-		System.out.println("Usuário: " + reserva.getUsuarioLocador().getNome());
+		System.out.println("Usuário: " + reserva.getUsuarioLocador().getPessoa().getNome());
 	}
 
 	@Test
@@ -81,7 +81,7 @@ public class ReservaDAOTest {
 		System.out.println("Código: " + reserva.getCodigo());
 		System.out.println("Status: " + reserva.getStatus());
 		System.out.println("Código do Imóvel: " + reserva.getImovel().getCodigo());
-		System.out.println("Usuário: " + reserva.getUsuarioLocador().getNome());
+		System.out.println("Usuário: " + reserva.getUsuarioLocador().getPessoa().getNome());
 
 	}
 	
@@ -103,7 +103,7 @@ public class ReservaDAOTest {
 		System.out.println("Código: " + reserva.getCodigo());
 		System.out.println("Status: " + reserva.getStatus());
 		System.out.println("Código do Imóvel: " + reserva.getImovel().getCodigo());
-		System.out.println("Usuário: " + reserva.getUsuarioLocador().getNome());
+		System.out.println("Usuário: " + reserva.getUsuarioLocador().getPessoa().getNome());
 		
 		reserva.setImovel(imovel);
 		reserva.setStatus("Confirmado");
@@ -115,7 +115,7 @@ public class ReservaDAOTest {
 		System.out.println("Código: " + reserva.getCodigo());
 		System.out.println("Status: " + reserva.getStatus());
 		System.out.println("Código do Imóvel: " + reserva.getImovel().getCodigo());
-		System.out.println("Usuário: " + reserva.getUsuarioLocador().getNome());
+		System.out.println("Usuário: " + reserva.getUsuarioLocador().getPessoa().getNome());
 		
 	}
 }

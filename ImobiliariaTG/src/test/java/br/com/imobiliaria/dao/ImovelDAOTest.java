@@ -45,7 +45,7 @@ public class ImovelDAOTest {
 			System.out.println("Observação: " + imovel.getObservacoes());
 			System.out.println(
 					"Endereço: " + imovel.getEnderecoCompleto());
-			System.out.println("Usuário: " + imovel.getUsuario().getNome());
+			System.out.println("Usuário: " + imovel.getUsuario().getPessoa().getNome());
 			System.out.println("Valor Diária: " + imovel.getValorDiaria());
 			System.out.println();
 		}
@@ -62,7 +62,7 @@ public class ImovelDAOTest {
 		System.out.println("Código: " + imovel.getCodigo());
 		System.out.println("Observação: " + imovel.getObservacoes());
 		System.out.println("Endereço: " + imovel.getEnderecoCompleto());
-		System.out.println("Usuário: " + imovel.getUsuario().getNome());
+		System.out.println("Usuário: " + imovel.getUsuario().getPessoa().getNome());
 		System.out.println("Valor Diária: " + imovel.getValorDiaria());
 	}
 
@@ -80,7 +80,7 @@ public class ImovelDAOTest {
 		System.out.println("Código: " + imovel.getCodigo());
 		System.out.println("Observação: " + imovel.getObservacoes());
 		System.out.println("Endereço: " + imovel.getEnderecoCompleto());
-		System.out.println("Usuário: " + imovel.getUsuario().getNome());
+		System.out.println("Usuário: " + imovel.getUsuario().getPessoa().getNome());
 		System.out.println("Valor Diária: " + imovel.getValorDiaria());
 	}
 	
@@ -99,7 +99,7 @@ public class ImovelDAOTest {
 		System.out.println("Código: " + imovel.getCodigo());
 		System.out.println("Observação: " + imovel.getObservacoes());
 		System.out.println("Endereço: " + imovel.getEnderecoCompleto());
-		System.out.println("Usuário: " + imovel.getUsuario().getNome());
+		System.out.println("Usuário: " + imovel.getUsuario().getPessoa().getNome());
 		System.out.println("Valor Diária: " + imovel.getValorDiaria());
 		System.out.println();
 		
@@ -113,7 +113,7 @@ public class ImovelDAOTest {
 		System.out.println("Código: " + imovel.getCodigo());
 		System.out.println("Observação: " + imovel.getObservacoes());
 		System.out.println("Endereço: " + imovel.getEnderecoCompleto());
-		System.out.println("Usuário: " + imovel.getUsuario().getNome());
+		System.out.println("Usuário: " + imovel.getUsuario().getPessoa().getNome());
 		System.out.println("Valor Diária: " + imovel.getValorDiaria());
 	}
 }
