@@ -6,7 +6,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
 @SuppressWarnings("serial")
@@ -40,7 +39,7 @@ public class Imovel extends GenericDomain {
 	@ManyToOne // imóvel possui mais de um usuário (usuário proprietário e
 				// usuário locador)
 	@JoinColumn(nullable = false) // personalizar chaves estrangeiras
-	private Usuario usuario;
+	private Pessoa pessoa;
 
 	@Column(nullable = false, precision = 6, scale = 2) //precision é a quantidade de casas decimais, scale é qtd de casas depois da vírgula
 	private BigDecimal valorDiaria;
@@ -111,12 +110,12 @@ public class Imovel extends GenericDomain {
 		this.observacoes = observacoes;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	public Pessoa getPessoa() {
+		return pessoa;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
 
 	public BigDecimal getValorDiaria() {

@@ -19,7 +19,7 @@ public class AvaliacaoImovel extends GenericDomain {
 	
 	@ManyToOne //um usuário pode avaliar vários
 	@JoinColumn(nullable = false)
-	private Usuario usuarioAvaliador;
+	private Pessoa usuarioAvaliador;
 	
 	@Column(length = 2, nullable = false)
 	private Integer nota;
@@ -39,11 +39,11 @@ public class AvaliacaoImovel extends GenericDomain {
 		this.imovel = imovel;
 	}
 
-	public Usuario getUsuarioAvaliador() {
+	public Pessoa getUsuarioAvaliador() {
 		return usuarioAvaliador;
 	}
 
-	public void setUsuarioAvaliador(Usuario usuarioAvaliador) {
+	public void setUsuarioAvaliador(Pessoa usuarioAvaliador) {
 		this.usuarioAvaliador = usuarioAvaliador;
 	}
 

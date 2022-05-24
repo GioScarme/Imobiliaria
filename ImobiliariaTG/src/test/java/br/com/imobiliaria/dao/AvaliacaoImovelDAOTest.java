@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import br.com.imobiliaria.domain.AvaliacaoImovel;
 import br.com.imobiliaria.domain.Imovel;
+import br.com.imobiliaria.domain.Pessoa;
 import br.com.imobiliaria.domain.Usuario;
 
 public class AvaliacaoImovelDAOTest {
@@ -19,16 +20,15 @@ public class AvaliacaoImovelDAOTest {
 		ImovelDAO imovelDAO = new ImovelDAO();
 		Imovel imovel = imovelDAO.buscar(codigoImovel);
 
-		Long codigoUsuario = 4L;
-		UsuarioDAO usuarioDAO = new UsuarioDAO();
-		Usuario usuario = usuarioDAO.buscar(codigoUsuario);
+		PessoaDAO pessoaDAO = new PessoaDAO();
+		Pessoa pessoa = pessoaDAO.buscar(2L);
 		AvaliacaoImovel avaliacaoImovel = new AvaliacaoImovel();
 
 		avaliacaoImovel.setComentario("ótimo");
 		avaliacaoImovel.setData(new SimpleDateFormat("dd/MM/yyyy").parse("18/04/2022"));
 		avaliacaoImovel.setImovel(imovel);
 		avaliacaoImovel.setNota(10);
-		avaliacaoImovel.setUsuarioAvaliador(usuario);
+		avaliacaoImovel.setUsuarioAvaliador(pessoa);
 
 		AvaliacaoImovelDAO avaliacaoImovelDAO = new AvaliacaoImovelDAO();
 		avaliacaoImovelDAO.salvar(avaliacaoImovel);
@@ -45,7 +45,7 @@ public class AvaliacaoImovelDAOTest {
 			System.out.println("Data: " + avaliacaoImovel.getData());
 			System.out.println("Cógido Imóvel: " + avaliacaoImovel.getImovel().getCodigo());
 			System.out.println("Nota: " + avaliacaoImovel.getNota());
-			System.out.println("Usuário: " + avaliacaoImovel.getUsuarioAvaliador().getPessoa().getNome());
+			System.out.println("Usuário: " + avaliacaoImovel.getUsuarioAvaliador().getNome());
 			System.out.println();
 		}
 	}
@@ -62,7 +62,7 @@ public class AvaliacaoImovelDAOTest {
 		System.out.println("Data: " + avaliacaoImovel.getData());
 		System.out.println("Cógido Imóvel: " + avaliacaoImovel.getImovel().getCodigo());
 		System.out.println("Nota: " + avaliacaoImovel.getNota());
-		System.out.println("Usuário: " + avaliacaoImovel.getUsuarioAvaliador().getPessoa().getNome());
+		System.out.println("Usuário: " + avaliacaoImovel.getUsuarioAvaliador().getNome());
 	}
 
 	@Test
@@ -80,7 +80,7 @@ public class AvaliacaoImovelDAOTest {
 		System.out.println("Data: " + avaliacaoImovel.getData());
 		System.out.println("Cógido Imóvel: " + avaliacaoImovel.getImovel().getCodigo());
 		System.out.println("Nota: " + avaliacaoImovel.getNota());
-		System.out.println("Usuário: " + avaliacaoImovel.getUsuarioAvaliador().getPessoa().getNome());
+		System.out.println("Usuário: " + avaliacaoImovel.getUsuarioAvaliador().getNome());
 	}
 	
 	@Test
@@ -94,20 +94,19 @@ public class AvaliacaoImovelDAOTest {
 		ImovelDAO imovelDAO = new ImovelDAO();
 		Imovel imovel = imovelDAO.buscar(codigoImovel);
 		
-		Long codigoUsuario = 2L;
-		UsuarioDAO usuarioDAO = new UsuarioDAO();
-		Usuario usuario = usuarioDAO.buscar(codigoUsuario);
+		PessoaDAO pessoaDAO = new PessoaDAO();
+		Pessoa pessoa = pessoaDAO.buscar(2L);
 		
 		System.out.println("Avaliação a ser editada: ");
 		System.out.println("Código: " + avaliacaoImovel.getCodigo());
 		System.out.println("Data: " + avaliacaoImovel.getData());
 		System.out.println("Cógido Imóvel: " + avaliacaoImovel.getImovel().getCodigo());
 		System.out.println("Nota: " + avaliacaoImovel.getNota());
-		System.out.println("Usuário: " + avaliacaoImovel.getUsuarioAvaliador().getPessoa().getNome());
+		System.out.println("Usuário: " + avaliacaoImovel.getUsuarioAvaliador().getNome());
 		
 		avaliacaoImovel.setComentario("fgvnkoperjng");
 		avaliacaoImovel.setImovel(imovel);
-		avaliacaoImovel.setUsuarioAvaliador(usuario);
+		avaliacaoImovel.setUsuarioAvaliador(pessoa);
 		
 		avaliacaoImovelDAO.editar(avaliacaoImovel);
 		
@@ -116,6 +115,6 @@ public class AvaliacaoImovelDAOTest {
 		System.out.println("Data: " + avaliacaoImovel.getData());
 		System.out.println("Cógido Imóvel: " + avaliacaoImovel.getImovel().getCodigo());
 		System.out.println("Nota: " + avaliacaoImovel.getNota());
-		System.out.println("Usuário: " + avaliacaoImovel.getUsuarioAvaliador().getPessoa().getNome());
+		System.out.println("Usuário: " + avaliacaoImovel.getUsuarioAvaliador().getNome());
 	}
 }

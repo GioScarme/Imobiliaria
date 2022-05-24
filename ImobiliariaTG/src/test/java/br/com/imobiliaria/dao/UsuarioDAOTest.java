@@ -9,10 +9,10 @@ import br.com.imobiliaria.domain.Usuario;
 
 public class UsuarioDAOTest {
 	@Test
-	@Ignore
+//	@Ignore
 	public void salvar(){
 		PessoaDAO pessoaDAO = new PessoaDAO();
-		Pessoa pessoa = pessoaDAO.buscar(1L);
+		Pessoa pessoa = pessoaDAO.buscar(2L);
 		
 		System.out.println("Pessoa Encontrada");
 		System.out.println("Nome: " + pessoa.getNome());
@@ -33,7 +33,7 @@ public class UsuarioDAOTest {
 	}
 	
 	@Test
-//	@Ignore
+	@Ignore
 	public void autenticar(){
 		String email = "scarmegiovanna@gmail.com";
 		String senha = "123";

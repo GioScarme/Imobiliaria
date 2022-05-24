@@ -1,82 +1,52 @@
-<!DOCTYPE html>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
+<!-- Biblioteca do prime faces -->
 <h:head>
-	<f:facet name="first">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<meta name="viewport"
-			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-	</f:facet>
-
-	<title>AssinaMap</title>
-
-	<h:outputScript name="js/ripple.js" library="ultima-layout" />
-	<h:outputScript name="js/layout.js" library="ultima-layout" />
-	<h:outputStylesheet name="sistema.css" library="css" />
-
-	<link rel="shortcut icon" type="image/x-icon"
-		href="#{request.contextPath}/resources/img/favicon.png" />
-
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Teste Prime Faces</title>
 </h:head>
+<h:body>
 
-<h:body styleClass="bg">
-	<h:form id="fmrPrincipal">
-		<p:growl id="growl" />
+	<h:form id="frmLogin">
+		<p:growl id="mensagem" />
 
-		<div class="card login-panel ui-fluid">
+		<div class="Container100 Responsive100">
+			<div class="Card TexAlCenter">
+				<p:inputText  styleClass="Wid90" placeholder="Usuário" value="#{loginBean.usuario.pessoa.email}" 
+				requiredMessage="O campo usuário é obrigatório"/>
 
-			<div class="p-grid">
-				<p:graphicImage name="logo-gemmap-login.png" library="img"
-					width="100%" height="100%" />
+				<div class="empty-pageBox10"></div>
 
-				<div class="p-col-12">
-					<p:outputLabel value="Bem vindo(a) ao AssinaMap"/>
-				</div>
+				<p:password  styleClass="Wid90" placeholder="Senha" value="#{loginBean.usuario.senha}"
+				requiredMessage="O campo senha é obrigatório" />
 
-				<div class="p-col-12">
-					<span class="ui-float-label"> <p:inputText
-							onkeypress="mascaraMutuario(this,cpfCnpj)" maxlength="18"
-							value="#{MBLogin.usuario.cpfCnpj}" /> <p:outputLabel
-							for="@previous" value="CPF / CNPJ" />
-					</span>
-				</div>
-				<div class="p-col-12">
-					<span class="ui-float-label"> <p:password
-							value="#{MBLogin.usuario.senha}" /> <p:outputLabel
-							for="@previous" value="Senha" />
-					</span>
-				</div>
-				<div class="p-col-12">
-					<p:commandButton value="Entrar" style="width: 100%"
-						icon="pi pi-sign-in" actionListener="#{MBLogin.logar()}"
-						update="growl" />
-					<p:button value="Esqueci a senha" style="width: 100%"
-						styleClass="ui-button-secondary" icon="pi pi-question-circle"
-						outcome="redefinir-senha" />
-				</div>
+				<div class="empty-pageBox30"></div>
 
-				<div class="p-col-12">
-					<div align="center">
-						<p:link href="http://gemmap.com.br/"
-							value="Powered by Gemmap Sistemas" target="_blank" />
-					</div>
-				</div>
+				<p:commandButton value="Entrar" actionListener="#{loginBean.autenticar}"
+					update="frmLogin:mensagem" styleClass="Wid100" />
+
+				<div class="empty-pageBox10"></div>
+
+				<p:button value="Primeiro Acesso" styleClass="Wid100"
+					href="/paginas/public/primeiro_acesso.xhtml" />
+
+				<div class="empty-pageBox10"></div>
+
+				<span class="Fs14"> Esqueceu sua senha? - <p:link
+						value="Clique aqui!"
+						href="/paginas/public/esqueci_minha_senha.xhtml" /></span>
+				<div class="empty-pageBox30"></div>
+
+				<span class="Fs14" title="Data de Alteração da Versão 12/09/2018">Versão
+					1.0.6</span>
 			</div>
 		</div>
 
-		<h:outputStylesheet name="css/primeicons.css" library="ultima-layout" />
-		<h:outputStylesheet name="css/primeflex.min.css"
-			library="ultima-layout" />
-		<h:outputStylesheet name="css/ripple.css" library="ultima-layout" />
-		<h:outputStylesheet name="css/layout-blue.css" library="ultima-layout" />
-		<h:outputScript name="script.js" library="js" />
-		<h:outputScript name="mascara.js" library="js" />
 	</h:form>
-</h:body>
 
+</h:body>
 </html>

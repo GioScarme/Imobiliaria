@@ -9,6 +9,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import br.com.imobiliaria.domain.Imovel;
+import br.com.imobiliaria.domain.Pessoa;
 import br.com.imobiliaria.domain.Reserva;
 import br.com.imobiliaria.domain.Usuario;
 
@@ -20,9 +21,8 @@ public class ReservaDAOTest {
 		ImovelDAO imovelDAO = new ImovelDAO();
 		Imovel imovel = imovelDAO.buscar(codigoImovel);
 
-		Long codigoUsuario = 4L;
-		UsuarioDAO usuarioDAO = new UsuarioDAO();
-		Usuario usuario = usuarioDAO.buscar(codigoUsuario);
+		PessoaDAO pessoaDAO = new PessoaDAO();
+		Pessoa pessoa = pessoaDAO.buscar(2L);
 
 		Reserva reserva = new Reserva();
 
@@ -31,7 +31,7 @@ public class ReservaDAOTest {
 		reserva.setDataSolicitacao(new SimpleDateFormat("dd/MM/yyyy").parse("12/02/2022"));
 		reserva.setImovel(imovel);
 		reserva.setStatus("Aguandando");
-		reserva.setUsuarioLocador(usuario);
+		reserva.setUsuarioLocador(pessoa);
 		reserva.setValorTotal(new BigDecimal(1200.00));
 
 		ReservaDAO reservaDAO = new ReservaDAO();
@@ -48,7 +48,7 @@ public class ReservaDAOTest {
 			System.out.println("Código: " + reserva.getCodigo());
 			System.out.println("Status: " + reserva.getStatus());
 			System.out.println("Código do Imóvel: " + reserva.getImovel().getCodigo());
-			System.out.println("Usuário: " + reserva.getUsuarioLocador().getPessoa().getNome());
+			System.out.println("Usuário: " + reserva.getUsuarioLocador().getNome());
 			System.out.println();
 		}
 	}
@@ -64,7 +64,7 @@ public class ReservaDAOTest {
 		System.out.println("Código: " + reserva.getCodigo());
 		System.out.println("Status: " + reserva.getStatus());
 		System.out.println("Código do Imóvel: " + reserva.getImovel().getCodigo());
-		System.out.println("Usuário: " + reserva.getUsuarioLocador().getPessoa().getNome());
+		System.out.println("Usuário: " + reserva.getUsuarioLocador().getNome());
 	}
 
 	@Test
@@ -81,7 +81,7 @@ public class ReservaDAOTest {
 		System.out.println("Código: " + reserva.getCodigo());
 		System.out.println("Status: " + reserva.getStatus());
 		System.out.println("Código do Imóvel: " + reserva.getImovel().getCodigo());
-		System.out.println("Usuário: " + reserva.getUsuarioLocador().getPessoa().getNome());
+		System.out.println("Usuário: " + reserva.getUsuarioLocador().getNome());
 
 	}
 	
@@ -95,19 +95,18 @@ public class ReservaDAOTest {
 		ImovelDAO imovelDAO = new ImovelDAO();
 		Imovel imovel = imovelDAO.buscar(codigoImovel);
 		
-		Long codigoUsuario = 5L;
-		UsuarioDAO usuarioDAO = new UsuarioDAO();
-		Usuario usuario = usuarioDAO.buscar(codigoUsuario);
+		PessoaDAO pessoaDAO = new PessoaDAO();
+		Pessoa pessoa = pessoaDAO.buscar(2L);
 		
 		System.out.println("Reserva a ser editada: ");
 		System.out.println("Código: " + reserva.getCodigo());
 		System.out.println("Status: " + reserva.getStatus());
 		System.out.println("Código do Imóvel: " + reserva.getImovel().getCodigo());
-		System.out.println("Usuário: " + reserva.getUsuarioLocador().getPessoa().getNome());
+		System.out.println("Usuário: " + reserva.getUsuarioLocador().getNome());
 		
 		reserva.setImovel(imovel);
 		reserva.setStatus("Confirmado");
-		reserva.setUsuarioLocador(usuario);
+		reserva.setUsuarioLocador(pessoa);
 		
 		reservaDAO.editar(reserva);
 		
@@ -115,7 +114,7 @@ public class ReservaDAOTest {
 		System.out.println("Código: " + reserva.getCodigo());
 		System.out.println("Status: " + reserva.getStatus());
 		System.out.println("Código do Imóvel: " + reserva.getImovel().getCodigo());
-		System.out.println("Usuário: " + reserva.getUsuarioLocador().getPessoa().getNome());
+		System.out.println("Usuário: " + reserva.getUsuarioLocador().getNome());
 		
 	}
 }

@@ -16,7 +16,7 @@ public class Reserva extends GenericDomain {
 	
 	@ManyToOne //um usuário pode ter mais de uma reserva
 	@JoinColumn(nullable = false)
-	private Usuario usuarioLocador;
+	private Pessoa usuarioLocador;
 	
 	@ManyToOne //um imóvel pode estar em várias reservas, mas não na mesma data da reserva ???
 	@JoinColumn(nullable = false)
@@ -40,11 +40,11 @@ public class Reserva extends GenericDomain {
 	@Column(nullable = false)
 	private String status;
 
-	public Usuario getUsuarioLocador() {
+	public Pessoa getUsuarioLocador() {
 		return usuarioLocador;
 	}
 
-	public void setUsuarioLocador(Usuario usuarioLocador) {
+	public void setUsuarioLocador(Pessoa usuarioLocador) {
 		this.usuarioLocador = usuarioLocador;
 	}
 

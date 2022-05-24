@@ -6,29 +6,34 @@ import java.util.List;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import br.com.imobiliaria.domain.Cidade;
 import br.com.imobiliaria.domain.Imovel;
+import br.com.imobiliaria.domain.Pessoa;
 import br.com.imobiliaria.domain.Usuario;
 
 public class ImovelDAOTest {
 	@Test
-	@Ignore
+//	@Ignore
 	public void salvar() {
 
-		Long codigoUsuario = 2L;
-		UsuarioDAO usuarioDAO = new UsuarioDAO();
-		Usuario usuario = usuarioDAO.buscar(codigoUsuario);
+		PessoaDAO pessoaDAO = new PessoaDAO();
+		Pessoa pessoa = pessoaDAO.buscar(2L);
+		
+		CidadeDAO cidadeDAO = new CidadeDAO();
+		Cidade cidade = cidadeDAO.buscar(2L);
 
 		Imovel imovel = new Imovel();
 		imovel.setAtivo(true);
-		imovel.setCaminhoDocumento("teste");
-		imovel.setEnderecoCompleto("");
-		imovel.setObservacoes("teste");
+		imovel.setCaminhoDocumento("testeEEEEEEEEEEE");
+		imovel.setEnderecoCompleto("testeEEEE");
+		imovel.setObservacoes("testeEEEEEEEEE");
 		imovel.setQtdBanheiros("2");
 		imovel.setQtdCamas("3");
 		imovel.setQtdComodos("6");
-		imovel.setRegrasProprietario("teste");
-		imovel.setUsuario(usuario);
-		imovel.setValorDiaria(new BigDecimal(120.00));
+		imovel.setRegrasProprietario("testeEEEEEE");
+		imovel.setPessoa(pessoa);
+		imovel.setValorDiaria(new BigDecimal(140.00));
+		imovel.setCidade(cidade);
 
 		ImovelDAO imovelDAO = new ImovelDAO();
 		imovelDAO.salvar(imovel);
@@ -45,7 +50,7 @@ public class ImovelDAOTest {
 			System.out.println("Observação: " + imovel.getObservacoes());
 			System.out.println(
 					"Endereço: " + imovel.getEnderecoCompleto());
-			System.out.println("Usuário: " + imovel.getUsuario().getPessoa().getNome());
+			System.out.println("Usuário: " + imovel.getPessoa().getNome());
 			System.out.println("Valor Diária: " + imovel.getValorDiaria());
 			System.out.println();
 		}
@@ -62,7 +67,7 @@ public class ImovelDAOTest {
 		System.out.println("Código: " + imovel.getCodigo());
 		System.out.println("Observação: " + imovel.getObservacoes());
 		System.out.println("Endereço: " + imovel.getEnderecoCompleto());
-		System.out.println("Usuário: " + imovel.getUsuario().getPessoa().getNome());
+		System.out.println("Usuário: " + imovel.getPessoa().getNome());
 		System.out.println("Valor Diária: " + imovel.getValorDiaria());
 	}
 
@@ -80,31 +85,31 @@ public class ImovelDAOTest {
 		System.out.println("Código: " + imovel.getCodigo());
 		System.out.println("Observação: " + imovel.getObservacoes());
 		System.out.println("Endereço: " + imovel.getEnderecoCompleto());
-		System.out.println("Usuário: " + imovel.getUsuario().getPessoa().getNome());
+		System.out.println("Usuário: " + imovel.getPessoa().getNome());
 		System.out.println("Valor Diária: " + imovel.getValorDiaria());
 	}
 	
 	@Test
-//	@Ignore
+	@Ignore
 	public void editar(){
 		Long codigoImovel = 1L;
 		ImovelDAO imovelDAO = new ImovelDAO();
 		Imovel imovel = imovelDAO.buscar(codigoImovel);
 		
-		Long codigoUsuario = 4L;
-		UsuarioDAO usuarioDAO = new UsuarioDAO();
-		Usuario usuario = usuarioDAO.buscar(codigoUsuario);
+		Long codigoPessoa = 1L;
+		PessoaDAO pessoaDAO = new PessoaDAO();
+		Pessoa pessoa = pessoaDAO.buscar(codigoPessoa);
 		
 		System.out.println("Imóvel a ser editado: ");
 		System.out.println("Código: " + imovel.getCodigo());
 		System.out.println("Observação: " + imovel.getObservacoes());
 		System.out.println("Endereço: " + imovel.getEnderecoCompleto());
-		System.out.println("Usuário: " + imovel.getUsuario().getPessoa().getNome());
+		System.out.println("Usuário: " + imovel.getPessoa().getNome());
 		System.out.println("Valor Diária: " + imovel.getValorDiaria());
 		System.out.println();
 		
 		imovel.setObservacoes("dfcnodhnco");
-		imovel.setUsuario(usuario);
+		imovel.setPessoa(pessoa);
 		imovel.setEnderecoCompleto("");
 		
 		imovelDAO.editar(imovel);
@@ -113,7 +118,7 @@ public class ImovelDAOTest {
 		System.out.println("Código: " + imovel.getCodigo());
 		System.out.println("Observação: " + imovel.getObservacoes());
 		System.out.println("Endereço: " + imovel.getEnderecoCompleto());
-		System.out.println("Usuário: " + imovel.getUsuario().getPessoa().getNome());
+		System.out.println("Usuário: " + imovel.getPessoa().getNome());
 		System.out.println("Valor Diária: " + imovel.getValorDiaria());
 	}
 }

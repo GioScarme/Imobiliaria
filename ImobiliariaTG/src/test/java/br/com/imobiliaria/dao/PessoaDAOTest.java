@@ -2,6 +2,7 @@ package br.com.imobiliaria.dao;
 
 import java.text.ParseException;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import br.com.imobiliaria.domain.Pessoa;
@@ -12,8 +13,8 @@ public class PessoaDAOTest {
 	public void salvar() throws ParseException {
 		
 		Pessoa pessoa = new Pessoa();
-		pessoa.setNome("Giovanna Scarme de Mira");
-		pessoa.setCpf("43265325806");
+		pessoa.setNome("Marianna Scarme de Mira");
+		pessoa.setCpf("14521425689");
 		pessoa.setRg("572280026");
 		pessoa.setRua("Nicola Picinni");
 		pessoa.setNumero(112);
@@ -22,7 +23,7 @@ public class PessoaDAOTest {
 		pessoa.setCidade("Santa Cruz do Rio Pardo");
 		pessoa.setComplemento("teste");
 		pessoa.setCelular("14 996184885");
-		pessoa.setEmail("scarmegiovanna@gmail.com");
+		pessoa.setEmail("marianna@gmail.com");
 		
 		PessoaDAO pessoaDAO =  new PessoaDAO();
 		pessoaDAO.salvar(pessoa);
