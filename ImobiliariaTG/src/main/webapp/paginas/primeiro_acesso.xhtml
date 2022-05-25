@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<!-- Biblioteca do prime faces -->
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Teste Prime Faces</title>
+</h:head>
+<h:body>
+
+
+
+
+	<div class="Container100 Responsive100">
+		<div class="Card TexAlCenter">
+
+			<h:form id="frmLogin">
+				<p:growl id="mensagem" />
+
+				<p:outputLabel value="Dados Pessoais" class="BoldGray Fs30" />
+
+
+				<h:panelGrid>
+					<p:inputText styleClass="Wid90" placeholder="Nome"
+						value="#{primeiroAcesso.pessoa.nome}"
+						requiredMessage="O campo nome é obrigatório" />
+					<div class="empty-pageBox10"></div>
+
+					<p:inputText styleClass="Wid90" placeholder="CPF"
+						value="#{primeiroAcesso.pessoa.cpf}"
+						requiredMessage="O campo cpf é obrigatório" />
+					<div class="empty-pageBox10"></div>
+
+					<p:inputText styleClass="Wid90" placeholder="RG"
+						value="#{primeiroAcesso.pessoa.rg}"
+						requiredMessage="O campo rg é obrigatório" />
+					<div class="empty-pageBox10"></div>
+
+					<p:inputText styleClass="Wid90" placeholder="Celular"
+						value="#{primeiroAcesso.pessoa.celular}"
+						requiredMessage="O campo celular é obrigatório" />
+					<div class="empty-pageBox10"></div>
+					
+					<p:inputText styleClass="Wid90" placeholder="Email"
+						value="#{primeiroAcesso.pessoa.email}"
+						requiredMessage="O campo e-mail é obrigatório" />
+				</h:panelGrid>
+
+				<p:outputLabel value="Endereço" class="BoldGray Fs30" />
+				<h:panelGrid>
+					<p:inputText styleClass="Wid90" placeholder="Rua"
+						value="#{primeiroAcesso.pessoa.rua}"
+						requiredMessage="O campo rua é obrigatório" />
+
+					<p:inputText styleClass="Wid90" placeholder="Número"
+						value="#{primeiroAcesso.pessoa.numero}"
+						requiredMessage="O campo número é obrigatório" />
+
+					<p:inputText styleClass="Wid90" placeholder="Bairro"
+						value="#{primeiroAcesso.pessoa.bairro}"
+						requiredMessage="O campo bairro é obrigatório" />
+
+					<p:inputText styleClass="Wid90" placeholder="CEP"
+						value="#{primeiroAcesso.pessoa.cep}"
+						requiredMessage="O campo cep é obrigatório" />
+
+					<p:inputText styleClass="Wid90" placeholder="Cidade"
+						value="#{primeiroAcesso.pessoa.cidade}"
+						requiredMessage="O campo cidade é obrigatório" />
+
+					<p:inputText styleClass="Wid90" placeholder="Complemento"
+						value="#{primeiroAcesso.pessoa.complemento}" />
+					
+					
+
+					<div class="empty-pageBox10"></div>
+				</h:panelGrid>
+
+				<p:commandButton value="Gravar Cadastro"
+					actionListener="#{primeiroAcesso.salvar}" update="frmLogin:mensagem"
+					styleClass="Wid100" />
+
+				<h:panelGrid>
+					
+
+					<p:password styleClass="Wid90" placeholder="Senha"
+						value="#{loginBean.usuario.senha}"
+						requiredMessage="O campo senha é obrigatório" />
+
+					<div class="empty-pageBox30"></div>
+				</h:panelGrid>
+
+
+				<p:commandButton value="Gravar"
+					actionListener="#{loginBean.autenticar}" update="frmLogin:mensagem"
+					styleClass="Wid100" />
+
+				<div class="empty-pageBox10"></div>
+
+			</h:form>
+		</div>
+	</div>
+
+
+
+</h:body>
+</html>
