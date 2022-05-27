@@ -9,74 +9,7 @@
 
 	<ui:define name="conteudo">
 
-	<h:form id="frmListagem">
-		<p:panel>
-			<p:dataTable id="tabela" emptyMessage="Nenhum registro encontrado."
-				paginator="true" rows="5" value="#{imovelBean.imoveis}" var="imovel"
-				paginatorPosition="top">
-.
-
-				<p:column headerText="Cidade" sortBy="#{imovel.cidade.nome}"
-					filterBy="#{imovel.cidade.nome}">
-					<h:outputText value="#{imovel.cidade.nome}" />
-					<h:outputText value=" - " />
-					<h:outputText value="#{imovel.cidade.estado}" />
-				</p:column>
-
-				<p:column headerText="Proprietário" sortBy="#{imovel.usuario.pessoa.nome}"
-					filterBy="#{imovel.pessoa.nome}">
-					<h:outputText value="#{imovel.pessoa.nome}" />
-				</p:column>
-
-				<p:column headerText="Descrição" sortBy="#{imovel.observacoes}"
-					filterBy="#{imovel.observacoes}">
-					<h:outputText value="#{imovel.observacoes}" />
-				</p:column>
-
-				<p:column headerText="Endereço">
-					<h:outputText value="#{imovel.enderecoCompleto}" />
-				</p:column>
-
-				<p:column headerText="Valor Diária">
-					<h:outputText value="#{imovel.valorDiaria}" />
-				</p:column>
-
-				<p:column headerText="Regras do proprietário">
-					<h:outputText value="#{imovel.regrasProprietario}" />
-				</p:column>
-
-				<p:column headerText="Ativo">
-					<p:selectBooleanCheckbox value="#{imovel.ativo}" disabled="true" />
-				</p:column>
-
-				<p:column headerText="Opções">
-					<p:commandButton icon="ui-icon-trash"
-						actionListener="#{imovelBean.excluir}"
-						update=":mensagem :frmListagem:tabela">
-						<p:confirm header="Confirmação" message="Deseja excluir o imóvel?"
-							icon="ui-icon-alert" />
-						<f:attribute name="imovelSelecionado" value="#{imovel}" />
-					</p:commandButton>
-
-					<p:commandButton icon="ui-icon-pencil"
-						actionListener="#{imovelBean.editar}" update=":frmCadastro:painel"
-						oncomplete="PF('dialogo').show();">
-						<f:attribute name="imovelSelecionado" value="#{imovel}" />
-					</p:commandButton>
-				</p:column>
-			</p:dataTable>
-
-			<p:confirmDialog global="true">
-				<p:commandButton value=" Sim " type=" button "
-					styleClass=" ui-confirmdialog-yes " icon=" ui-icon-check " />
-				<p:commandButton value=" Não " type=" button "
-					styleClass=" ui-confirmdialog-no " icon=" ui-icon-close " />
-			</p:confirmDialog>
-		</p:panel>
-	</h:form>
-
-	<p:dialog header="Imóvel - Cadastro" widgetVar="dialogo"
-		draggable="false" resizable="false" modal="true" closable="false">
+	
 		<h:form id="frmCadastro" enctype="multipart/form-data">
 			<h:panelGrid id="painel" columns="2">
 
@@ -151,6 +84,6 @@
 				<p:commandButton value="Fechar" oncomplete="PF('dialogo').hide();" />
 			</h:panelGrid>
 		</h:form>
-	</p:dialog>
+	
 	</ui:define>
 </ui:composition>

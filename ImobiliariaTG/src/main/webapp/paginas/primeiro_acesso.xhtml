@@ -7,7 +7,7 @@
 <!-- Biblioteca do prime faces -->
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Teste Prime Faces</title>
+	<title>Primeiro acesso</title>
 </h:head>
 <h:body>
 
@@ -82,23 +82,11 @@
 				<p:commandButton value="Gravar Cadastro"
 					actionListener="#{primeiroAcesso.salvar}" update="frmLogin:mensagem"
 					styleClass="Wid100" />
-
-				<h:panelGrid>
 					
+				<p:button value="Voltar" styleClass="Wid100"
+					href="/paginas/login.xhtml" />
 
-					<p:password styleClass="Wid90" placeholder="Senha"
-						value="#{loginBean.usuario.senha}"
-						requiredMessage="O campo senha é obrigatório" />
-
-					<div class="empty-pageBox30"></div>
-				</h:panelGrid>
-
-
-				<p:commandButton value="Gravar"
-					actionListener="#{loginBean.autenticar}" update="frmLogin:mensagem"
-					styleClass="Wid100" />
-
-				<div class="empty-pageBox10"></div>
+				
 
 			</h:form>
 		</div>
