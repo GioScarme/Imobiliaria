@@ -9,53 +9,20 @@
 
 	<ui:define name="conteudo">
 
-		<h:form id="formulario">
-			<p:panel>
-				<h:panelGrid columns="3">
-					<p:outputLabel for="cidade" value="Cidade:" />
-					<p:inputText id="cidade" size="20" maxlength="13"
-						value="#{imovelBean.imovel.cidade.nome}">
-					</p:inputText>
-					<p:commandButton icon="ui-icon-search" update=":mensagem :formulario:panelDados"
-						actionListener="#{imovelBean.buscarImovel}" />
-				</h:panelGrid>
-				<h:panelGroup id="panelDados" layout="block">
-					<p:dataTable id="tabela" emptyMessage="Nenhum registro encontrado."
-						paginator="true" rows="5" value="#{imovelBean.imoveis}"
-						var="imovel" paginatorPosition="top" rendered="#{imovelBean.exibeDados}">
+		<p:panel>
+			<div align="center">
+				<p:panelGrid>
+					<p:graphicImage value="/resources/images/imoveis/1.jpg"
+						library="demo" />
+						
+					<p:graphicImage value="/resources/images/imoveis/1.jpg"
+						library="demo" />
+				</p:panelGrid>
 
-						<p:column headerText="Cidade">
-							<h:outputText value="#{imovel.cidade.nome}" />
-							<h:outputText value=" - " />
-							<h:outputText value="#{imovel.cidade.estado}" />
-						</p:column>
+			</div>
 
-						<p:column headerText="Usuário">
-							<h:outputText value="#{imovel.usuario.nome}" />
-						</p:column>
+		</p:panel>
 
-						<p:column headerText="Descrição">
-							<h:outputText value="#{imovel.observacoes}" />
-						</p:column>
 
-						<p:column headerText="Endereço">
-							<h:outputText value="#{imovel.enderecoCompleto}" />
-						</p:column>
-
-						<p:column headerText="Valor Diária">
-							<h:outputText value="#{imovel.valorDiaria}" />
-						</p:column>
-
-						<p:column headerText="Regras do proprietário">
-							<h:outputText value="#{imovel.regrasProprietario}" />
-						</p:column>
-
-						<p:column headerText="Ativo">
-							<p:selectBooleanCheckbox value="#{imovel.ativo}" disabled="true" />
-						</p:column>
-					</p:dataTable>
-				</h:panelGroup>
-			</p:panel>
-		</h:form>
 	</ui:define>
 </ui:composition>
