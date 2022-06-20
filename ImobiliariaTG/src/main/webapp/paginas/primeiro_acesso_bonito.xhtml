@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<!-- Biblioteca do prime faces -->
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Login</title>
+</h:head>
+<h:body>
+
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login200">
+			<p:growl id="mensagem" />
+				<h:form id="frmLogin" class="login100-form validate-form">
+				
+					<span class="login100-form-title p-b-26"> <p:graphicImage
+							library="images" name="logo.png" styleClass="imagemCentralizada" />
+					</span>
+					<div align="center">
+						<H3>Dados Pessoais</H3>
+					</div>
+
+					<div class="wrap-input100 validate-input">
+						<p:inputText class="input200" placeholder="Nome"
+							value="#{primeiroAcesso.pessoa.nome}"
+							requiredMessage="O campo nome é obrigatório" />
+
+						<p:inputText class="input200" placeholder="CPF"
+							value="#{primeiroAcesso.pessoa.cpf}"
+							requiredMessage="O campo cpf é obrigatório" />
+
+						<p:inputText class="input200" placeholder="RG"
+							value="#{primeiroAcesso.pessoa.rg}"
+							requiredMessage="O campo rg é obrigatório" />
+
+						<p:inputText class="input200" placeholder="Celular"
+							value="#{primeiroAcesso.pessoa.celular}"
+							requiredMessage="O campo celular é obrigatório" />
+
+						<p:inputText class="input200" placeholder="Email"
+							value="#{primeiroAcesso.pessoa.email}"
+							requiredMessage="O campo e-mail é obrigatório" />
+
+					</div>
+					
+					
+					<div align="center">
+						<H3>Endereço</H3>
+					</div>
+
+					<div class="wrap-input100 validate-input">
+						<p:inputText class="input200" placeholder="Rua"
+						value="#{primeiroAcesso.pessoa.rua}"
+						requiredMessage="O campo rua é obrigatório" />
+
+						<p:inputText class="input200" placeholder="Número"
+						value="#{primeiroAcesso.pessoa.numero}"
+						requiredMessage="O campo número é obrigatório" />
+
+						<p:inputText class="input200" placeholder="Bairro"
+						value="#{primeiroAcesso.pessoa.bairro}"
+						requiredMessage="O campo bairro é obrigatório" />
+
+						<p:inputText class="input200" placeholder="CEP"
+						value="#{primeiroAcesso.pessoa.cep}"
+						requiredMessage="O campo cep é obrigatório" />
+
+						<p:inputText class="input200" placeholder="Cidade"
+						value="#{primeiroAcesso.pessoa.cidade}"
+						requiredMessage="O campo cidade é obrigatório" />
+						
+						<p:inputText class="input200" placeholder="Complemento"
+						value="#{primeiroAcesso.pessoa.complemento}" />
+
+					</div>
+					
+
+
+					<div class="container-login100-form-btn">
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>
+							<p:commandButton class="login100-form-btn" value="Gravar Cadastro"
+					actionListener="#{primeiroAcesso.salvar}" />
+
+						</div>
+					</div>
+
+				</h:form>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="dropDownSelect1"></div>
+
+	<h:outputStylesheet name="main.css" library="css" />
+	<h:outputStylesheet name="util.css" library="css" />
+	<h:outputStylesheet name="font-awesome-4.7.0/css/font-awesome.min.css"
+		library="fonts" />
+	<h:outputStylesheet
+		name="iconic/css/material-design-iconic-font.min.css" library="fonts" />
+	<h:outputStylesheet name="images/icons/favicon.ico" library="images" />
+	<h:outputStylesheet name="bootstrap/css/bootstrap.min.css"
+		library="vendor" />
+	<h:outputStylesheet name="animate/animate.css" library="vendor" />
+	<h:outputStylesheet name="css-hamburgers/hamburgers.min.css"
+		library="vendor" />
+	<h:outputStylesheet name="animsition/css/animsition.min.css"
+		library="vendor" />
+	<h:outputStylesheet name="select2/select2.min.css" library="vendor" />
+	<h:outputStylesheet name="daterangepicker/daterangepicker.css"
+		library="vendor" />
+
+	<h:outputStylesheet library="css" name="estilos.css" />
+
+
+	<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+	<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+	<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+</h:body>
+</html>

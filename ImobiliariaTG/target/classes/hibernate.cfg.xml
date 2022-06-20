@@ -30,9 +30,9 @@
 		<property name="show_sql">true</property>
 
 		<!-- Cria as tabelas do banco de dados -->
-		<property name="hbm2ddl.auto">update</property>
+		<property name="hbm2ddl.auto">validate</property>
 		
-		<!-- Mapeamento das Entidades -->
+<!-- 		Mapeamento das Entidades -->
 		<mapping class="br.com.imobiliaria.domain.Cidade" />
 		<mapping class="br.com.imobiliaria.domain.Usuario" />
 		<mapping class="br.com.imobiliaria.domain.Imovel" />

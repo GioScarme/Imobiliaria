@@ -7,22 +7,22 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	template="/template/modelo.xhtml">
 
-	<ui:define name="conteudo">
 
+	<ui:define name="conteudo">
 		<p:panel>
-			<div align="center">
-				<p:panelGrid>
-					<p:graphicImage value="/resources/images/imoveis/1.jpg"
-						library="demo" />
-						
-					<p:graphicImage value="/resources/images/imoveis/1.jpg"
-						library="demo" />
-				</p:panelGrid>
+			<div class="card">
+
+				<h:dataTable>
+					<h:column>
+						<p:graphicImage value="/resources/images/imoveis/1.jpg"
+							library="demo" styleClass="product-image" />
+					</h:column>
+				</h:dataTable>
+
 
 			</div>
-
 		</p:panel>
 
-
+		<!-- 		<h:outputStylesheet name="principal.css" library="css" /> -->
 	</ui:define>
 </ui:composition>

@@ -25,10 +25,12 @@ import org.primefaces.model.UploadedFile;
 
 import br.com.imobiliaria.dao.CidadeDAO;
 import br.com.imobiliaria.dao.ImovelDAO;
+import br.com.imobiliaria.dao.PessoaDAO;
 import br.com.imobiliaria.dao.UsuarioDAO;
 import br.com.imobiliaria.domain.Cidade;
 import br.com.imobiliaria.domain.ImagemImovel;
 import br.com.imobiliaria.domain.Imovel;
+import br.com.imobiliaria.domain.Pessoa;
 import br.com.imobiliaria.domain.Usuario;
 
 @SuppressWarnings("serial")
@@ -37,7 +39,7 @@ import br.com.imobiliaria.domain.Usuario;
 public class ImovelBean implements Serializable {
 	private Imovel imovel;
 	private List<Imovel> imoveis;
-	private List<Usuario> usuarios;
+	private List<Pessoa> usuarios;
 	private List<Cidade> cidades;
 	private Cidade cidade;
 	private UploadedFile file;
@@ -51,6 +53,13 @@ public class ImovelBean implements Serializable {
 			ImovelDAO imovelDAO = new ImovelDAO();
 			imoveis = imovelDAO.listar();
 			exibeDados = false;
+			
+			CidadeDAO cidadeDAO = new CidadeDAO();
+			cidades = cidadeDAO.listar();
+			
+			PessoaDAO pessoaDAO = new PessoaDAO();
+			usuarios = pessoaDAO.listar();
+			
 		} catch (RuntimeException erro) {
 			Messages.addGlobalError("Ocorreu um erro ao listar os imóveis");
 			erro.printStackTrace();
@@ -61,8 +70,8 @@ public class ImovelBean implements Serializable {
 		try {
 			imovel = new Imovel();
 
-			UsuarioDAO usuarioDAO = new UsuarioDAO();
-			usuarios = usuarioDAO.listar();
+//			UsuarioDAO usuarioDAO = new UsuarioDAO();
+//			usuarios = usuarioDAO.listar();
 
 			CidadeDAO cidadeDAO = new CidadeDAO();
 			cidades = cidadeDAO.listar();
@@ -86,8 +95,8 @@ public class ImovelBean implements Serializable {
 			imoveis = imovelDAO.listar();
 			novo();
 
-			UsuarioDAO usuarioDAO = new UsuarioDAO();
-			usuarios = usuarioDAO.listar();
+//			UsuarioDAO usuarioDAO = new UsuarioDAO();
+//			usuarios = usuarioDAO.listar();
 
 			CidadeDAO cidadeDAO = new CidadeDAO();
 			cidades = cidadeDAO.listar();
@@ -202,8 +211,8 @@ public class ImovelBean implements Serializable {
 		try {
 			imovel = (Imovel) evento.getComponent().getAttributes().get("imovelSelecionado");
 
-			UsuarioDAO usuarioDAO = new UsuarioDAO();
-			usuarios = usuarioDAO.listar();
+//			UsuarioDAO usuarioDAO = new UsuarioDAO();
+//			usuarios = usuarioDAO.listar();
 
 			CidadeDAO cidadeDAO = new CidadeDAO();
 			cidades = cidadeDAO.listar();
@@ -247,11 +256,11 @@ public class ImovelBean implements Serializable {
 		this.imoveis = imoveis;
 	}
 
-	public List<Usuario> getUsuarios() {
+	public List<Pessoa> getUsuarios() {
 		return usuarios;
 	}
-
-	public void setUsuarios(List<Usuario> usuarios) {
+	
+	public void setUsuarios(List<Pessoa> usuarios) {
 		this.usuarios = usuarios;
 	}
 

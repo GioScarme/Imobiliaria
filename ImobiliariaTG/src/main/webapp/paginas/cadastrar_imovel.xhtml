@@ -38,15 +38,8 @@
 					value="#{imovelBean.imovel.valorDiaria}" />
 
 				<p:outputLabel value="Documento do imóvel:" />
-				<p:fileUpload multiple="true" label="Selecionar Arquivos"
-					sizeLimit="12240000" allowTypes="/(\.|\/)(pdf)$/"
-					invalidSizeMessage="O tamanho de arquivo máximo é de 10 MB"
-					invalidFileMessage="apenas pdf" sequential="true" update="msgFile"
-					mode="advanced" dragDropSupport="false" auto="true" fileLimit="10"
-					value="#{imovelBean.imovel.caminhoDocumento}"
-					fileUploadListener="#{imovelBean.handleFileUpload}">
-					<p:growl id="msgFile" showDetail="true" keepAlive="true" />
-				</p:fileUpload>
+				<p:inputText maxlength="50" size="30"
+					value="#{imovelBean.imovel.caminhoDocumento}" />
 
 				<p:outputLabel value="Regras do proprietário:" />
 				<p:inputText maxlength="50" size="30"
@@ -65,8 +58,16 @@
 					value="#{imovelBean.imovel.qtdBanheiros}" />
 
 				<p:outputLabel value="Proprietário:" />
-				<p:inputText maxlength="50" size="30"
-					value="#{imovelBean.imovel.pessoa.nome}" />
+				<p:selectOneMenu id="prop" filter="true"
+					value="#{imovelBean.imovel.pessoa}" required="true"
+					requiredMessage="O campo 'Proprietário' é obrigatório"
+					converter="omnifaces.SelectItemsConverter">
+					<f:selectItem noSelectionOption="true"
+						itemLabel="Selecione um proprietário" />
+					<f:selectItems value="#{imovelBean.usuarios}" var="usuario"
+						itemValue="#{usuario}"
+						itemLabel="#{usuario.nome}" />
+				</p:selectOneMenu>
 
 				<p:outputLabel value="Ativo:" />
 				<p:selectBooleanCheckbox value="#{imovelBean.imovel.ativo}" />
@@ -80,7 +81,7 @@
 			<h:panelGrid columns="2">
 				<p:commandButton value="Salvar"
 					actionListener="#{imovelBean.salvar}"
-					update=":mensagem :frmCadastro:painel :frmListagem:tabela" />
+					 />
 				<p:commandButton value="Fechar" oncomplete="PF('dialogo').hide();" />
 			</h:panelGrid>
 		</h:form>

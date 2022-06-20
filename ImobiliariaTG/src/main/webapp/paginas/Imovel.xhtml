@@ -111,7 +111,7 @@
 					invalidFileMessage="apenas pdf" sequential="true" update="msgFile"
 					mode="advanced" dragDropSupport="false" auto="true" fileLimit="10"
 					value="#{imovelBean.imovel.caminhoDocumento}"
-					fileUploadListener="#{imovelBean.handleFileUpload}">
+					listener="#{imovelBean.handleFileUpload}">
 					<p:growl id="msgFile" showDetail="true" keepAlive="true" />
 				</p:fileUpload>
 
